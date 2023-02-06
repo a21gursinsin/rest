@@ -253,10 +253,13 @@ Vue.component("about", {
                             </div>
                         </div>
                         <div class="col-lg-6">
-                            <h5 class="section-title ff-secondary text-start text-primary fw-normal">About Us</h5>
-                            <h1 class="mb-4">Bienvenidos en <i class="fa fa-utensils text-primary me-2"></i>Milagros</h1>
-                            <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos erat ipsum et lorem et sit, sed stet lorem sit.</p>
-                            <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet</p>
+                            <h5 class="section-title ff-secondary text-start text-primary fw-normal">Nosotros</h5>
+                            <h1 class="mb-4">Bienvenidos en Restaurante<i class="fa fa-utensils text-primary me-2"></i>Milagros</h1>
+                            <p class="mb-4">Milagros es un restaurante situado en el centro de barcelona. El horario, ininterrumpido, desde 11 de mañana y hasta las 12 de la noche, todos los días de la semana, lo convierte en un punto de encuentro ideal para un almuerzo, unas tapas a media tarde o bien una cena informal.</p>
+                            <p class="mb-4">Soportamos un viaje a través de sobres, texturas y tradiciones. Un viaje a través de otros territorios, de otras culturas, además de la nuestra. Proponemos un formato de tapasy platillos y bajo concepto de compartir. </p>
+                            <p class="mb-4">El restaurante cuenta, también, con una pequeña terraza. Las mesas están distribuidas en paralelo, con tranquilidad del interior y el caminar de la gente en el exterior. 
+                            Una mesa en la barra, frente a la cocina, permite asistir, en directo, a preparación, mise en place y emplatados. </p>
+                            <p class="mb-4">¡Será un placer darles la bienvenida a nuestro restaurante!</p>
                             <div class="row g-4 mb-4">
                                 <div class="col-sm-6">
                                     <div class="d-flex align-items-center border-start border-5 border-primary px-3">
@@ -269,7 +272,7 @@ Vue.component("about", {
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="d-flex align-items-center border-start border-5 border-primary px-3">
-                                        <h1 class="flex-shrink-0 display-5 text-primary mb-0" data-toggle="counter-up">50</h1>
+                                        <h1 class="flex-shrink-0 display-5 text-primary mb-0" data-toggle="counter-up">4</h1>
                                         <div class="ps-4">
                                             <p class="mb-0">Popular</p>
                                             <h6 class="text-uppercase mb-0">Master Chefs</h6>
@@ -296,7 +299,7 @@ Vue.component("menulist", {
   },
   async mounted() {
     await fetch(
-      "http://singh.alumnes.inspedralbes.cat/js/backend/menulist.php?type=Ensaladas",
+      "http://http://localhost:8080/rest/js/backend/menulist.php?type=Ensaladas",
       {
         mode: "cors",
         headers: {
@@ -435,8 +438,7 @@ Vue.component("menulist", {
   methods: {
     buscarMenu: async function (type) {
       await fetch(
-        "http://singh.alumnes.inspedralbes.cat/js/backend/menulist.php?type=" +
-          type
+        "http://localhost:8080/rest/js/backend/menulist.php?type=" + type
       )
         .then((response) => response.json())
         .then((data) => {
@@ -661,15 +663,14 @@ const home = Vue.component("home", {
   data: function () {
     return {
       list: [],
+      cat: [],
       len: 0,
       type: "Ensaladas",
     };
   },
   async mounted() {
-    console.log(this.type);
     await fetch(
-      "http://singh.alumnes.inspedralbes.cat/js/backend/menulist.php?type=" +
-        this.type,
+      "http://localhost:8080/rest/js/backend/menulist.php?type=" + this.type,
       {
         mode: "cors",
         headers: {
@@ -679,8 +680,16 @@ const home = Vue.component("home", {
     )
       .then((response) => response.json())
       .then((menu) => (this.list = menu));
-    console.log(this.list);
-    // console.log(this.list.producto);
+
+    await fetch("http://localhost:8080/rest/js/backend/categoria.php", {
+      mode: "cors",
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => (this.cat = data));
+    //   <i class="fa fa-coffee fa-2x text-primary"></i>
   },
   template: `<div>
         <navbar></navbar>
@@ -692,63 +701,12 @@ const home = Vue.component("home", {
                         <h1 class="mb-5">Most Popular Items</h1>
                     </div>
                     <div class="tab-class text-center wow fadeInUp" data-wow-delay="0.1s">
-                        <ul class="nav nav-pills d-inline-flex justify-content-center border-bottom mb-5">
+                        <ul class="nav nav-pills d-inline-flex justify-content-center border-bottom mb-5" v-for="c in cat.length" >
                             <li class="nav-item">
-                                <a @click="buscarMenu('Ensaladas')" class="d-flex align-items-center text-start mx-6 ms-0 pb-3 active" data-bs-toggle="pill" href="#tab-1">
-                                    <i class="fa fa-coffee fa-2x text-primary"></i>
+                                <a @click="buscarMenu(cat[c-1].Categoria)" class="d-flex align-items-center text-start mx-6 ms-0 pb-3 " data-bs-toggle="pill" href="#tab-1">
                                     <div class="ps-3">
-                                        <small class="text-body">Popular</small>
-                                        <h6 class="mt-n1 mb-0">Breakfast</h6>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a @click="buscarMenu('Tapas frías')" 
-                                 class="d-flex align-items-center text-start mx-5 pb-3" data-bs-toggle="pill" href="#tab-2">
-                                    <i class="fa fa-hamburger fa-2x text-primary"></i>
-                                    <div class="ps-3">
-                                        <small class="text-body">Special</small>
-                                        <h6 class="mt-n1 mb-0">Launch</h6>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a @click="buscarMenu('Tapas frías')" 
-                                 class="d-flex align-items-center text-start mx-5 pb-3" data-bs-toggle="pill" href="#tab-3">
-                                    <i class="fa fa-hamburger fa-2x text-primary"></i>
-                                    <div class="ps-3">
-                                        <small class="text-body">Special</small>
-                                        <h6 class="mt-n1 mb-0">Launch</h6>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a @click="buscarMenu('Tapas frías')" 
-                                 class="d-flex align-items-center text-start mx-5 pb-3" data-bs-toggle="pill" href="#tab-4">
-                                    <i class="fa fa-hamburger fa-2x text-primary"></i>
-                                    <div class="ps-3">
-                                        <small class="text-body">Special</small>
-                                        <h6 class="mt-n1 mb-0">Launch</h6>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a @click="buscarMenu('Tapas frías')" 
-                                 class="d-flex align-items-center text-start mx-5 pb-3" data-bs-toggle="pill" href="#tab-5">
-                                    <i class="fa fa-hamburger fa-2x text-primary"></i>
-                                    <div class="ps-3">
-                                        <small class="text-body">Special</small>
-                                        <h6 class="mt-n1 mb-0">Launch</h6>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a @click="buscarMenu('Tapas frías')" 
-                                 class="d-flex align-items-center text-start mx-5 pb-3" data-bs-toggle="pill" href="#tab-6">
-                                    <i class="fa fa-hamburger fa-2x text-primary"></i>
-                                    <div class="ps-3">
-                                        <small class="text-body">Special</small>
-                                        <h6 class="mt-n1 mb-0">Launch</h6>
+                                        <small class="text-body"></small>
+                                        <h6 class="mt-n1 mb-0">{{cat[c-1].Categoria}}</h6>
                                     </div>
                                 </a>
                             </li>
@@ -756,8 +714,8 @@ const home = Vue.component("home", {
                         <div class="tab-content">
                             <div id="tab-1" class="tab-pane fade show p-0 active" v-for="i in list.length" >
                                 <div class="row g-4"  v-if="(i%2) == '1'" >
-                                    <div class="col-lg-6">
-                                        <div class="d-flex align-items-center"   >
+                                    <div class="col-lg-6" >
+                                        <div class="d-flex align-items-center">
                                             <img class="flex-shrink-0 img-fluid rounded" src="img/menu-8.jpg" alt="" style="width: 80px;">
                                             <div class="w-100 d-flex flex-column text-start ps-4">
                                                 <h5 class="d-flex justify-content-between border-bottom pb-2">
@@ -768,29 +726,21 @@ const home = Vue.component("home", {
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row g-4" v-if="(i%2) == '0'" >
-                                    <div class="col-lg-6" >
+                                    <div class="col-lg-6" v-if="(i+1) <= list.length">
                                         <div class="d-flex align-items-center">
                                             <img class="flex-shrink-0 img-fluid rounded" src="img/menu-8.jpg" alt="" style="width: 80px;">
                                             <div class="w-100 d-flex flex-column text-start ps-4">
                                                 <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                                    <span> </span>
-                                                    <span class="text-primary">  Euros</span>
+                                                    <span>{{ list[i].nombre }} </span>
+                                                    <span class="text-primary"> {{ list[i].precio_ }}€</span>
                                                 </h5>
-                                                <small class="fst-italic"> </small>
+                                                <small class="fst-italic"> {{ list[i].descripcion }}</small>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div id="tab-2" class="tab-pane fade show p-0" >
-                                
-                                <br>
-                            </div>
-                            </div>
-                            <div id="tab-3" class="tab-pane fade show p-0">
-                                
+                            <br>
                             </div>
                         </div>
                     </div>
@@ -800,19 +750,15 @@ const home = Vue.component("home", {
         </div>`,
   methods: {
     buscarMenu: function (type) {
-      fetch(
-        "http://singh.alumnes.inspedralbes.cat/js/backend/menulist.php?type=" +
-          type,
-        {
-          mode: "cors",
-          headers: {
-            "Access-Control-Allow-Origin": "*",
-          },
-        }
-      )
+      fetch("http://localhost:8080/rest/js/backend/menulist.php?type=" + type, {
+        mode: "cors",
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+        },
+      })
         .then((response) => response.json())
         .then((data) => {
-          this.list = console.log(data);
+          this.list = data;
         });
     },
   },
