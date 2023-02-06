@@ -4,7 +4,7 @@ Vue.component("navbar", {
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4 px-lg-5 py-3 py-lg-0">
             <a href="" class="navbar-brand p-0">
                 <h1 class="text-primary m-0">Restaurant &nbsp;<i class="fa fa-utensils me-3"></i>Milagros</h1>
-                <!-- <img src="img/logo.png" alt="Logo"> -->
+                
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                 <span class="fa fa-bars"></span>
@@ -12,15 +12,15 @@ Vue.component("navbar", {
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto py-0 pe-4">
                     <router-link to="/"><a class="nav-item nav-link active">Home</a></router-link>
-                    <a v-b-modal.about class="nav-item nav-link" >About</a>
-                    <a v-b-modal.service class="nav-item nav-link">Service</a>
-                    <router-link to="/eat"><a class="nav-item nav-link">Menu</a></router-link>
-                    <router-link to="/booking"><a class="nav-item nav-link">Booking</a></router-link>
-                    <a href="testimonial.html"class="nav-item nav-link">Testimonial</a>
-                    <router-link to="/contact"><a class="nav-item nav-link">Contact</a></router-link>
+                    <a v-b-modal.about class="nav-item nav-link" >Nosotros</a>
+                    <a v-b-modal.service class="nav-item nav-link">Servicios</a>
+                    <router-link to="/eat"><a class="nav-item nav-link">Menú</a></router-link>
+                    <router-link to="/booking"><a class="nav-item nav-link">Reserva</a></router-link>
+                    <a href="testimonial.html"class="nav-item nav-link">Reseñas</a>
+                    <router-link to="/contact"><a class="nav-item nav-link">Contacto</a></router-link>
                     
                 </div>
-                <router-link to="/booking"><a class="btn btn-primary py-2 px-4">Book A Table</a></router-link>
+                <router-link to="/booking"><a class="btn btn-primary py-2 px-4">Reservar Mesa</a></router-link>
             </div>
         </nav>
     
@@ -28,9 +28,10 @@ Vue.component("navbar", {
             <div class="container my-5 py-5">
                 <div class="row align-items-center g-5">
                     <div class="col-lg-6 text-center text-lg-start">
-                        <h1 class="display-3 text-white animated slideInLeft">Enjoy Our<br>Delicious Meal</h1>
-                        <p class="text-white animated slideInLeft mb-4 pb-2">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet</p>
-                        <a href="" class="btn btn-primary py-sm-3 px-sm-5 me-3 animated slideInLeft">Book A Table</a><a href="" class="btn btn-primary py-sm-3 px-sm-5 me-3 animated slideInLeft">Book A Table</a>  
+                        <h1 class="display-3 text-white animated slideInLeft">Bienvenidos</h1>
+                        <p class="text-white animated slideInLeft mb-4 pb-2">En milagros disfrutad todos los días de la semana de la oferta de ocio. Comidas y cenas, vermuts, cervezas, copas y juerga. </p>
+                        <a href="" class="btn btn-primary py-sm-3 px-sm-5 me-3 animated slideInLeft">Reservar Mesa</a>
+                        <a href="" class="btn btn-primary py-sm-3 px-sm-5 me-3 animated slideInLeft">Menu del dia</a>  
                     </div>
                     <div class="col-lg-6 text-center text-lg-end overflow-hidden">
                         <img class="img-fluid" src="img/hero.png" alt="">
@@ -69,11 +70,11 @@ Vue.component("foot", {
                     </div>
                     <div class="col-lg-3 col-md-6">
                         <h4 class="section-title ff-secondary text-start text-primary fw-normal mb-4">Contact</h4>
-                        <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>Plaça de Milagros Consarnau i Sabaté, 33, 08902 L'Hospitalet de Llobregat, Barcelona</p>
-                        <p class="mb-2"><i class="bi bi-phone me-3"></i><a href="tel:+34 632 33 53 56">+34 632 33 53 56</a></p>
-                        <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+012 345 67890</p>
-                        <p class="mb-2"><i class="fa fa-envelope me-3"></i>
-                            restaurantemilagros33@gmail.com
+                        <p class="btn btn-link"><i class="fa fa-map-marker-alt me-3"></i><a href="https://goo.gl/maps/1zw6EhP4BWX7uchMA" target="_blank">Plaça de Milagros Consarnau i Sabaté, 33, 08902 L'Hospitalet de Llobregat, Barcelona</a></p>
+                        <p class="btn btn-link"><i class="bi bi-phone me-3"></i><a href="tel:+34 632 33 53 56">+34 632 33 53 56</a></p>
+                        <p class="btn btn-link"><i class="fa fa-phone-alt me-3"></i><a href="tel:+34 933 60 68 24">+34 933 60 68 24</a></p>
+                        <p class="btn btn-link"><i class="fa fa-envelope me-3"></i>
+                            <a href="mailto:restaurantemilagros33@gmail.com">Clic Correo</a>
                             </p>
                     </div>
                     <div class="col-lg-3 col-md-6">
@@ -160,7 +161,76 @@ Vue.component("service", {
             </div>
       </div>`,
 });
-
+Vue.component("team", {
+  template: `<div>
+              <div class="pt-5 pb-3">
+                  <div class="container">
+                      <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                          <h5 class="section-title ff-secondary text-center text-primary fw-normal">Team Members</h5>
+                          <h1 class="mb-5">Our Master Chefs</h1>
+                      </div>
+                      <div class="row g-4">
+                          <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                              <div class="team-item text-center rounded overflow-hidden">
+                                  <div class="rounded-circle overflow-hidden m-4">
+                                      <img class="img-fluid" src="img/team-1.jpeg" alt="">
+                                  </div>
+                                  <h5 class="mb-0">Full Name</h5>
+                                  <small>Designation</small>
+                                  <div class="d-flex justify-content-center mt-3">
+                                      <a class="btn btn-square btn-primary mx-1" href="https://facebook.com/freewebsitecode"><i class="fab fa-facebook-f"></i></a>
+                                      <a class="btn btn-square btn-primary mx-1" href="https://freewebsitecode.com/"><i class="fab fa-twitter"></i></a>
+                                      <a class="btn btn-square btn-primary mx-1" href="https://youtube.com/freewebsitecode"><i class="fab fa-youtube"></i></a>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                              <div class="team-item text-center rounded overflow-hidden">
+                                  <div class="rounded-circle overflow-hidden m-4">
+                                      <img class="img-fluid" src="img/team-2.jpeg" alt="">
+                                  </div>
+                                  <h5 class="mb-0">Full Name</h5>
+                                  <small>Designation</small>
+                                  <div class="d-flex justify-content-center mt-3">
+                                      <a class="btn btn-square btn-primary mx-1" href="https://facebook.com/freewebsitecode"><i class="fab fa-facebook-f"></i></a>
+                                      <a class="btn btn-square btn-primary mx-1" href="https://freewebsitecode.com/"><i class="fab fa-twitter"></i></a>
+                                      <a class="btn btn-square btn-primary mx-1" href="https://youtube.com/freewebsitecode"><i class="fab fa-youtube"></i></a>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                              <div class="team-item text-center rounded overflow-hidden">
+                                  <div class="rounded-circle overflow-hidden m-4">
+                                      <img class="img-fluid" src="img/team-1.jpeg" alt="">
+                                  </div>
+                                  <h5 class="mb-0">Full Name</h5>
+                                  <small>Designation</small>
+                                  <div class="d-flex justify-content-center mt-3">
+                                      <a class="btn btn-square btn-primary mx-1" href="https://facebook.com/freewebsitecode"><i class="fab fa-facebook-f"></i></a>
+                                      <a class="btn btn-square btn-primary mx-1" href="https://freewebsitecode.com/"><i class="fab fa-twitter"></i></a>
+                                      <a class="btn btn-square btn-primary mx-1" href="https://youtube.com/freewebsitecode"><i class="fab fa-youtube"></i></a>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.7s">
+                              <div class="team-item text-center rounded overflow-hidden">
+                                  <div class="rounded-circle overflow-hidden m-4">
+                                      <img class="img-fluid" src="img/team-2.jpeg" alt="">
+                                  </div>
+                                  <h5 class="mb-0">Full Name</h5>
+                                  <small>Designation</small>
+                                  <div class="d-flex justify-content-center mt-3">
+                                      <a class="btn btn-square btn-primary mx-1" href="https://facebook.com/freewebsitecode"><i class="fab fa-facebook-f"></i></a>
+                                      <a class="btn btn-square btn-primary mx-1" href="https://freewebsitecode.com/"><i class="fab fa-twitter"></i></a>
+                                      <a class="btn btn-square btn-primary mx-1" href="https://youtube.com/freewebsitecode"><i class="fab fa-youtube"></i></a>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              </div>`,
+});
 Vue.component("about", {
   template: `<div>
         <div class="py-5" id="us">
@@ -184,7 +254,7 @@ Vue.component("about", {
                         </div>
                         <div class="col-lg-6">
                             <h5 class="section-title ff-secondary text-start text-primary fw-normal">About Us</h5>
-                            <h1 class="mb-4">Welcome to <i class="fa fa-utensils text-primary me-2"></i>Restaurant</h1>
+                            <h1 class="mb-4">Bienvenidos en <i class="fa fa-utensils text-primary me-2"></i>Milagros</h1>
                             <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos erat ipsum et lorem et sit, sed stet lorem sit.</p>
                             <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet</p>
                             <div class="row g-4 mb-4">
@@ -212,6 +282,7 @@ Vue.component("about", {
                     </div>
                 </div>
             </div>
+            <team></team>
       </div>`,
 });
 
@@ -506,77 +577,6 @@ Vue.component("reservation", {
             </div>`,
 });
 
-Vue.component("team", {
-  template: `<div>
-            <div class="pt-5 pb-3">
-                <div class="container">
-                    <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                        <h5 class="section-title ff-secondary text-center text-primary fw-normal">Team Members</h5>
-                        <h1 class="mb-5">Our Master Chefs</h1>
-                    </div>
-                    <div class="row g-4">
-                        <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                            <div class="team-item text-center rounded overflow-hidden">
-                                <div class="rounded-circle overflow-hidden m-4">
-                                    <img class="img-fluid" src="img/team-1.jpg" alt="">
-                                </div>
-                                <h5 class="mb-0">Full Name</h5>
-                                <small>Designation</small>
-                                <div class="d-flex justify-content-center mt-3">
-                                    <a class="btn btn-square btn-primary mx-1" href="https://facebook.com/freewebsitecode"><i class="fab fa-facebook-f"></i></a>
-                                    <a class="btn btn-square btn-primary mx-1" href="https://freewebsitecode.com/"><i class="fab fa-twitter"></i></a>
-                                    <a class="btn btn-square btn-primary mx-1" href="https://youtube.com/freewebsitecode"><i class="fab fa-youtube"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                            <div class="team-item text-center rounded overflow-hidden">
-                                <div class="rounded-circle overflow-hidden m-4">
-                                    <img class="img-fluid" src="img/team-2.jpg" alt="">
-                                </div>
-                                <h5 class="mb-0">Full Name</h5>
-                                <small>Designation</small>
-                                <div class="d-flex justify-content-center mt-3">
-                                    <a class="btn btn-square btn-primary mx-1" href="https://facebook.com/freewebsitecode"><i class="fab fa-facebook-f"></i></a>
-                                    <a class="btn btn-square btn-primary mx-1" href="https://freewebsitecode.com/"><i class="fab fa-twitter"></i></a>
-                                    <a class="btn btn-square btn-primary mx-1" href="https://youtube.com/freewebsitecode"><i class="fab fa-youtube"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                            <div class="team-item text-center rounded overflow-hidden">
-                                <div class="rounded-circle overflow-hidden m-4">
-                                    <img class="img-fluid" src="img/team-3.jpg" alt="">
-                                </div>
-                                <h5 class="mb-0">Full Name</h5>
-                                <small>Designation</small>
-                                <div class="d-flex justify-content-center mt-3">
-                                    <a class="btn btn-square btn-primary mx-1" href="https://facebook.com/freewebsitecode"><i class="fab fa-facebook-f"></i></a>
-                                    <a class="btn btn-square btn-primary mx-1" href="https://freewebsitecode.com/"><i class="fab fa-twitter"></i></a>
-                                    <a class="btn btn-square btn-primary mx-1" href="https://youtube.com/freewebsitecode"><i class="fab fa-youtube"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.7s">
-                            <div class="team-item text-center rounded overflow-hidden">
-                                <div class="rounded-circle overflow-hidden m-4">
-                                    <img class="img-fluid" src="img/team-4.jpg" alt="">
-                                </div>
-                                <h5 class="mb-0">Full Name</h5>
-                                <small>Designation</small>
-                                <div class="d-flex justify-content-center mt-3">
-                                    <a class="btn btn-square btn-primary mx-1" href="https://facebook.com/freewebsitecode"><i class="fab fa-facebook-f"></i></a>
-                                    <a class="btn btn-square btn-primary mx-1" href="https://freewebsitecode.com/"><i class="fab fa-twitter"></i></a>
-                                    <a class="btn btn-square btn-primary mx-1" href="https://youtube.com/freewebsitecode"><i class="fab fa-youtube"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            </div>`,
-});
-
 Vue.component("cont", {
   template: `<div>
     <div class="py-5">
@@ -650,16 +650,147 @@ Vue.component("cont", {
 });
 
 const home = Vue.component("home", {
+  data: function () {
+    return {
+      list: [],
+      len: 0,
+      type: "Ensaladas",
+    };
+  },
+  async mounted() {
+    console.log(this.type);
+    await fetch(
+      "http://localhost:8080/rest/js/backend/menulist.php?type=" + this.type
+    )
+      .then((response) => response.json())
+      .then((menu) => (this.list = menu));
+    console.log(this.list);
+    // console.log(this.list.producto);
+  },
   template: `<div>
         <navbar></navbar>
-        <service></service>
         <about></about>
-        <menulist></menulist>
+        <div class="py-5">
+                <div class="container">
+                    <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                        <h5 class="section-title ff-secondary text-center text-primary fw-normal">Food Menu</h5>
+                        <h1 class="mb-5">Most Popular Items</h1>
+                    </div>
+                    <div class="tab-class text-center wow fadeInUp" data-wow-delay="0.1s">
+                        <ul class="nav nav-pills d-inline-flex justify-content-center border-bottom mb-5">
+                            <li class="nav-item">
+                                <a @click="buscarMenu('Ensaladas')" class="d-flex align-items-center text-start mx-6 ms-0 pb-3 active" data-bs-toggle="pill" href="#tab-1">
+                                    <i class="fa fa-coffee fa-2x text-primary"></i>
+                                    <div class="ps-3">
+                                        <small class="text-body">Popular</small>
+                                        <h6 class="mt-n1 mb-0">Breakfast</h6>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a @click="buscarMenu('Tapas frías')" 
+                                 class="d-flex align-items-center text-start mx-5 pb-3" data-bs-toggle="pill" href="#tab-2">
+                                    <i class="fa fa-hamburger fa-2x text-primary"></i>
+                                    <div class="ps-3">
+                                        <small class="text-body">Special</small>
+                                        <h6 class="mt-n1 mb-0">Launch</h6>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a @click="buscarMenu('Tapas frías')" 
+                                 class="d-flex align-items-center text-start mx-5 pb-3" data-bs-toggle="pill" href="#tab-3">
+                                    <i class="fa fa-hamburger fa-2x text-primary"></i>
+                                    <div class="ps-3">
+                                        <small class="text-body">Special</small>
+                                        <h6 class="mt-n1 mb-0">Launch</h6>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a @click="buscarMenu('Tapas frías')" 
+                                 class="d-flex align-items-center text-start mx-5 pb-3" data-bs-toggle="pill" href="#tab-4">
+                                    <i class="fa fa-hamburger fa-2x text-primary"></i>
+                                    <div class="ps-3">
+                                        <small class="text-body">Special</small>
+                                        <h6 class="mt-n1 mb-0">Launch</h6>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a @click="buscarMenu('Tapas frías')" 
+                                 class="d-flex align-items-center text-start mx-5 pb-3" data-bs-toggle="pill" href="#tab-5">
+                                    <i class="fa fa-hamburger fa-2x text-primary"></i>
+                                    <div class="ps-3">
+                                        <small class="text-body">Special</small>
+                                        <h6 class="mt-n1 mb-0">Launch</h6>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a @click="buscarMenu('Tapas frías')" 
+                                 class="d-flex align-items-center text-start mx-5 pb-3" data-bs-toggle="pill" href="#tab-6">
+                                    <i class="fa fa-hamburger fa-2x text-primary"></i>
+                                    <div class="ps-3">
+                                        <small class="text-body">Special</small>
+                                        <h6 class="mt-n1 mb-0">Launch</h6>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div id="tab-1" class="tab-pane fade show p-0 active" v-for="i in list.length" >
+                                <div class="row g-4"  v-if="(i%2) == '1'" >
+                                    <div class="col-lg-6">
+                                        <div class="d-flex align-items-center"   >
+                                            <img class="flex-shrink-0 img-fluid rounded" src="img/menu-8.jpg" alt="" style="width: 80px;">
+                                            <div class="w-100 d-flex flex-column text-start ps-4">
+                                                <h5 class="d-flex justify-content-between border-bottom pb-2">
+                                                    <span>{{ list[i-1].nombre }}</span>
+                                                    <span class="text-primary"> {{ list[i-1].precio_ }}  Euros</span>
+                                                </h5>
+                                                <small class="fst-italic"> {{ list[i-1].descripcion }}  </small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row g-4" v-if="(i%2) == '0'" >
+                                    <div class="col-lg-6" >
+                                        <div class="d-flex align-items-center">
+                                            <img class="flex-shrink-0 img-fluid rounded" src="img/menu-8.jpg" alt="" style="width: 80px;">
+                                            <div class="w-100 d-flex flex-column text-start ps-4">
+                                                <h5 class="d-flex justify-content-between border-bottom pb-2">
+                                                    <span> </span>
+                                                    <span class="text-primary">  Euros</span>
+                                                </h5>
+                                                <small class="fst-italic"> </small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="tab-2" class="tab-pane fade show p-0" >
+                                
+                                <br>
+                            </div>
+                            </div>
+                            <div id="tab-3" class="tab-pane fade show p-0">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
         <testi></testi>
         <foot></foot>
         </div>`,
-  data: function () {
-    return {};
+  methods: {
+    buscarMenu: function (type) {
+      fetch("http://localhost:8080/rest/js/backend/menulist.php?type=" + type)
+        .then((response) => response.json())
+        .then((data) => {
+          this.list = console.log(data);
+        });
+    },
   },
 });
 
