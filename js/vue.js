@@ -660,7 +660,8 @@ const home = Vue.component("home", {
   async mounted() {
     console.log(this.type);
     await fetch(
-      "http://localhost:8080/rest/js/backend/menulist.php?type=" + this.type
+      "http://singh.alumnes.inspedralbes.cat/js/backend/menulist.php?type=" +
+        this.type
     )
       .then((response) => response.json())
       .then((menu) => (this.list = menu));
@@ -785,7 +786,10 @@ const home = Vue.component("home", {
         </div>`,
   methods: {
     buscarMenu: function (type) {
-      fetch("http://localhost:8080/rest/js/backend/menulist.php?type=" + type)
+      fetch(
+        "http://singh.alumnes.inspedralbes.cat/js/backend/menulist.php?type=" +
+          type
+      )
         .then((response) => response.json())
         .then((data) => {
           this.list = console.log(data);
