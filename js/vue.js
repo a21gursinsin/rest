@@ -291,16 +291,21 @@ Vue.component("menulist", {
     return {
       list: [],
       l: 0,
-      type: "Ensaladas",
+      type: "",
     };
   },
   async mounted() {
-    console.log(this.type);
     await fetch(
-      "http://localhost:8080/rest/js/backend/menulist.php?type=" + this.type
+      "http://singh.alumnes.inspedralbes.cat/js/backend/menulist.php?type=Ensaladas",
+      {
+        mode: "cors",
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+        },
+      }
     )
       .then((response) => response.json())
-      .then((menu) => (this.list = menu));
+      .then((menu) => (this.list = console.log(menu)));
     // console.log(this.list);
     // console.log(this.list.producto);
   },
@@ -428,8 +433,11 @@ Vue.component("menulist", {
             </div>
       </div>`,
   methods: {
-    buscarMenu: function (type) {
-      fetch("http://localhost:8080/rest/js/backend/menulist.php?type=" + type)
+    buscarMenu: async function (type) {
+      await fetch(
+        "http://singh.alumnes.inspedralbes.cat/js/backend/menulist.php?type=" +
+          type
+      )
         .then((response) => response.json())
         .then((data) => {
           this.list = console.log(data);
@@ -661,7 +669,13 @@ const home = Vue.component("home", {
     console.log(this.type);
     await fetch(
       "http://singh.alumnes.inspedralbes.cat/js/backend/menulist.php?type=" +
-        this.type
+        this.type,
+      {
+        mode: "cors",
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+        },
+      }
     )
       .then((response) => response.json())
       .then((menu) => (this.list = menu));
@@ -788,7 +802,13 @@ const home = Vue.component("home", {
     buscarMenu: function (type) {
       fetch(
         "http://singh.alumnes.inspedralbes.cat/js/backend/menulist.php?type=" +
-          type
+          type,
+        {
+          mode: "cors",
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+          },
+        }
       )
         .then((response) => response.json())
         .then((data) => {
