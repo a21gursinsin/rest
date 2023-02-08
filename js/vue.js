@@ -30,9 +30,10 @@ Vue.component("navbar", {
                     <div class="col-lg-6 text-center text-lg-start">
                         <h1 class="display-3 text-white animated slideInLeft">Bienvenidos</h1>
                         <p class="text-white animated slideInLeft mb-4 pb-2">En milagros disfrutad todos los días de la semana de la oferta de ocio. Comidas y cenas, vermuts, cervezas, copas y juerga. </p>
-                        <a href="" class="btn btn-primary py-sm-3 px-sm-5 me-3 mb-2  animated slideInUp">Pedido Online</a> 
-                        <a href="" class="btn btn-primary py-sm-3 px-sm-5 me-3 ml-1 animated slideInLeft">Reservar Mesa</a>
-                        <a href="" class="btn btn-secondary py-sm-3 px-sm-5 me-3 ml-5 mw-100 animated slideInLeft">Menu del dia</a>    
+                        <a href="" class="btn btn-primary py-sm-3 px-sm-5 me-3 mb-2 w-50 animated slideInRight">Pedido Online</a> 
+                        <a href="" class="btn btn-light py-sm-3 px-sm-5 me-3 mb-2 w-50 animated slideInLeft">Reservar Mesa</a>
+                        <a href="" class="btn btn-primary py-sm-3 px-sm-5 me-3 mb-2 w-50 animated slideInRight">Menu del dia</a>
+                        <a href="" class="btn btn-light py-sm-3 px-sm-5 me-3 mb-2 w-50 animated slideInLeft">Menu del dia</a>    
                     </div>
                     <div class="col-lg-6 text-center text-lg-end overflow-hidden">
                         <img class="img-fluid" src="img/hero.png" alt=""><br>
@@ -333,10 +334,9 @@ Vue.component("menulist", {
                         <div class="tab-class text-center wow fadeInUp" data-wow-delay="0.1s">
                             <ul class="nav nav-pills d-inline-flex justify-content-center border-bottom mb-5" v-for="c in cat.length" >
                                 <li class="nav-item">
-                                    <a @click="buscarMenu(cat[c-1].Categoria)" class="d-flex align-items-center text-start mx-6 ms-0 pb-3 " data-bs-toggle="pill" href="#tab-1">
+                                    <a @click="buscarMenu(cat[c-1].Categoria)" class="btn btn-primary py-sm-3 px-sm-3 me-2" data-bs-toggle="pill" href="#tab-1">
                                         <div class="ps-3">
-                                            <small class="text-body"></small>
-                                            <h6 class="mt-n1 mb-0">{{cat[c-1].Categoria}}</h6>
+                                            <h6 class=" mb-0">{{cat[c-1].Categoria}}</h6>
                                         </div>
                                     </a>
                                 </li>
@@ -371,12 +371,14 @@ Vue.component("menulist", {
                                     </div>
                                 </div>
                                 <br>
-                                </div>
-
+                                </div> 
+                                <a href="" class="btn btn-primary py-sm-3 px-sm-5 me-3 ml-5 animated slideInRight">Pedido Online</a>
+                                <a href="" class="btn btn-primary py-sm-3 px-sm-5 me-3  animated slideInLeft">Reservar Mesa</a>
+                                <a href="" class="btn btn-primary py-sm-3 px-sm-5 me-3  animated slideInRight">Menu del dia</a>
+                                <a href="" class="btn btn-primary py-sm-3 px-sm-5 me-3  animated slideInLeft">Menu del dia</a>  
                             </div>
                         </div>
                     </div>
-                    <a href="" class="btn btn-primary py-sm-3 px-sm-5 me-3 animated slideInLeft">Menu del dia</a> 
             </div>`,
   methods: {
     buscarMenu: function (type) {
@@ -395,6 +397,38 @@ Vue.component("menulist", {
 });
 
 Vue.component("testi", {
+  data: function () {
+    return {
+      list: [],
+      cat: [],
+      len: 0,
+      type: "Ensaladas",
+    };
+  },
+  async mounted() {
+    await fetch(
+      "http://localhost:8080/rest/js/backend/menulist.php?type=" + this.type,
+      {
+        mode: "cors",
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+        },
+      }
+    )
+      .then((response) => response.json())
+      .then((menu) => (this.list = menu));
+
+    await fetch("http://localhost:8080/rest/js/backend/categoria.php", {
+      mode: "cors",
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => (this.cat = data));
+    //   <i class="fa fa-coffee fa-2x text-primary"></i>
+  },
+
   template: `<div>
         <div class="py-5 wow fadeInUp" data-wow-delay="0.1s" id="testimonial">
                 <div class="container">
@@ -410,7 +444,7 @@ Vue.component("testi", {
                                 <img class="img-fluid flex-shrink-0 rounded-circle" src="img/testimonial-1.jpg" style="width: 50px; height: 50px;">
                                 <div class="ps-3">
                                     <h5 class="mb-1">Client Name</h5>
-                                    <small>Profession</small>
+                                    <small>Click para ver más</small>
                                 </div>
                             </div>
                         </div>
@@ -448,7 +482,9 @@ Vue.component("testi", {
                             </div>
                         </div>
                     </div>
+                    <a href="" class="btn btn-primary py-sm-3 px-sm-5 me-3 w-100 mt-5 animated slideInLeft">Contacto</a>
                 </div>
+                
             </div>
         </div>`,
 });
