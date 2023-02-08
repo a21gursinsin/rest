@@ -30,11 +30,12 @@ Vue.component("navbar", {
                     <div class="col-lg-6 text-center text-lg-start">
                         <h1 class="display-3 text-white animated slideInLeft">Bienvenidos</h1>
                         <p class="text-white animated slideInLeft mb-4 pb-2">En milagros disfrutad todos los días de la semana de la oferta de ocio. Comidas y cenas, vermuts, cervezas, copas y juerga. </p>
-                        <a href="" class="btn btn-primary py-sm-3 px-sm-5 me-3 animated slideInLeft">Reservar Mesa</a>
-                        <a href="" class="btn btn-primary py-sm-3 px-sm-5 me-3 animated slideInLeft">Menu del dia</a>  
+                        <a href="" class="btn btn-primary py-sm-3 px-sm-5 me-3 mb-2  animated slideInUp">Pedido Online</a> 
+                        <a href="" class="btn btn-primary py-sm-3 px-sm-5 me-3 ml-1 animated slideInLeft">Reservar Mesa</a>
+                        <a href="" class="btn btn-secondary py-sm-3 px-sm-5 me-3 ml-5 mw-100 animated slideInLeft">Menu del dia</a>    
                     </div>
                     <div class="col-lg-6 text-center text-lg-end overflow-hidden">
-                        <img class="img-fluid" src="img/hero.png" alt="">
+                        <img class="img-fluid" src="img/hero.png" alt=""><br>
                     </div>
                 </div>
             </div>
@@ -293,13 +294,14 @@ Vue.component("menulist", {
   data: function () {
     return {
       list: [],
-      l: 0,
-      type: "",
+      cat: [],
+      len: 0,
+      type: "Ensaladas",
     };
   },
   async mounted() {
     await fetch(
-      "http://http://localhost:8080/rest/js/backend/menulist.php?type=Ensaladas",
+      "http://localhost:8080/rest/js/backend/menulist.php?type=" + this.type,
       {
         mode: "cors",
         headers: {
@@ -308,141 +310,85 @@ Vue.component("menulist", {
       }
     )
       .then((response) => response.json())
-      .then((menu) => (this.list = console.log(menu)));
-    // console.log(this.list);
-    // console.log(this.list.producto);
+      .then((menu) => (this.list = menu));
+
+    await fetch("http://localhost:8080/rest/js/backend/categoria.php", {
+      mode: "cors",
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => (this.cat = data));
+    //   <i class="fa fa-coffee fa-2x text-primary"></i>
   },
   template: `<div>
-        <div class="py-5">
-                <div class="container">
-                    <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                        <h5 class="section-title ff-secondary text-center text-primary fw-normal">Food Menu</h5>
-                        <h1 class="mb-5">Most Popular Items</h1>
-                    </div>
-                    <div class="tab-class text-center wow fadeInUp" data-wow-delay="0.1s">
-                        <ul class="nav nav-pills d-inline-flex justify-content-center border-bottom mb-5">
-                            <li class="nav-item">
-                                <a @click="buscarMenu('Ensaladas')" class="d-flex align-items-center text-start mx-6 ms-0 pb-3 active" data-bs-toggle="pill" href="#tab-1">
-                                    <i class="fa fa-coffee fa-2x text-primary"></i>
-                                    <div class="ps-3">
-                                        <small class="text-body">Popular</small>
-                                        <h6 class="mt-n1 mb-0">Breakfast</h6>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a @click="buscarMenu('Tapas frías')" 
-                                 class="d-flex align-items-center text-start mx-5 pb-3" data-bs-toggle="pill" href="#tab-2">
-                                    <i class="fa fa-hamburger fa-2x text-primary"></i>
-                                    <div class="ps-3">
-                                        <small class="text-body">Special</small>
-                                        <h6 class="mt-n1 mb-0">Launch</h6>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a @click="buscarMenu('Tapas frías')" 
-                                 class="d-flex align-items-center text-start mx-5 pb-3" data-bs-toggle="pill" href="#tab-3">
-                                    <i class="fa fa-hamburger fa-2x text-primary"></i>
-                                    <div class="ps-3">
-                                        <small class="text-body">Special</small>
-                                        <h6 class="mt-n1 mb-0">Launch</h6>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a @click="buscarMenu('Tapas frías')" 
-                                 class="d-flex align-items-center text-start mx-5 pb-3" data-bs-toggle="pill" href="#tab-4">
-                                    <i class="fa fa-hamburger fa-2x text-primary"></i>
-                                    <div class="ps-3">
-                                        <small class="text-body">Special</small>
-                                        <h6 class="mt-n1 mb-0">Launch</h6>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a @click="buscarMenu('Tapas frías')" 
-                                 class="d-flex align-items-center text-start mx-5 pb-3" data-bs-toggle="pill" href="#tab-5">
-                                    <i class="fa fa-hamburger fa-2x text-primary"></i>
-                                    <div class="ps-3">
-                                        <small class="text-body">Special</small>
-                                        <h6 class="mt-n1 mb-0">Launch</h6>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a @click="buscarMenu('Tapas frías')" 
-                                 class="d-flex align-items-center text-start mx-5 pb-3" data-bs-toggle="pill" href="#tab-6">
-                                    <i class="fa fa-hamburger fa-2x text-primary"></i>
-                                    <div class="ps-3">
-                                        <small class="text-body">Special</small>
-                                        <h6 class="mt-n1 mb-0">Launch</h6>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a @click="buscarMenu('Tapas frías')" 
-                                 class="d-flex align-items-center text-start mx-5 pb-3" data-bs-toggle="pill" href="#tab-7">
-                                    <i class="fa fa-hamburger fa-2x text-primary"></i>
-                                    <div class="ps-3">
-                                        <small class="text-body">Special</small>
-                                        <h6 class="mt-n1 mb-0">Launch</h6>
-                                    </div>
-                                </a>
-                            </li>
-                        </ul>
-                        <div class="tab-content">
-                            <div id="tab-1" class="tab-pane fade show p-0 active" >
-                                <div class="row g-4" v-for="l in 8" >
-                                    <div class="col-lg-6" v-if="(l-1)%2 == '0'">
-                                        <div class="d-flex align-items-center" >
-                                            <img class="flex-shrink-0 img-fluid rounded" src="img/menu-8.jpg" alt="" style="width: 80px;">
-                                            <div class="w-100 d-flex flex-column text-start ps-4">
-                                                <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                                    <span>{{ list.producto[l-1] S}}</span>
-                                                    <span class="text-primary">  Euros</span>
-                                                </h5>
-                                                <small class="fst-italic">  </small>
+  
+            <div class="py-5">
+                    <div class="container">
+                        <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                            <h5 class="section-title ff-secondary text-center text-primary fw-normal">Food Menu</h5>
+                            <h1 class="mb-5">Most Popular Items</h1>
+                        </div>
+                        <div class="tab-class text-center wow fadeInUp" data-wow-delay="0.1s">
+                            <ul class="nav nav-pills d-inline-flex justify-content-center border-bottom mb-5" v-for="c in cat.length" >
+                                <li class="nav-item">
+                                    <a @click="buscarMenu(cat[c-1].Categoria)" class="d-flex align-items-center text-start mx-6 ms-0 pb-3 " data-bs-toggle="pill" href="#tab-1">
+                                        <div class="ps-3">
+                                            <small class="text-body"></small>
+                                            <h6 class="mt-n1 mb-0">{{cat[c-1].Categoria}}</h6>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="tab-content">
+                                <div id="tab-1" class="tab-pane fade show p-0 active" v-for="i in list.length" >
+                                    <div class="row g-4"  v-if="(i%2) == '1'" >
+                                        <div class="col-lg-6" >
+                                            <div class="d-flex align-items-center">
+                                                <img class="flex-shrink-0 img-fluid rounded" src="img/menu-8.jpg" alt="" style="width: 80px;">
+                                                <div class="w-100 d-flex flex-column text-start ps-4">
+                                                    <h5 class="d-flex justify-content-between border-bottom pb-2">
+                                                        <span>{{ list[i-1].nombre }}</span>
+                                                        <span class="text-primary"> {{ list[i-1].precio_ }}€</span>
+                                                    </h5>
+                                                    <small class="fst-italic"> {{ list[i-1].descripcion }}  </small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6" v-if="(i+1) <= list.length">
+                                            <div class="d-flex align-items-center">
+                                                <img class="flex-shrink-0 img-fluid rounded" src="img/menu-8.jpg" alt="" style="width: 80px;">
+                                                <div class="w-100 d-flex flex-column text-start ps-4">
+                                                    <h5 class="d-flex justify-content-between border-bottom pb-2">
+                                                        <span>{{ list[i].nombre }} </span>
+                                                        <span class="text-primary"> {{ list[i].precio_ }}€</span>
+                                                    </h5>
+                                                    <small class="fst-italic"> {{ list[i].descripcion }}</small>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row g-4"  >
-                                    <div class="col-lg-6">
-                                        <div class="d-flex align-items-center">
-                                            <img class="flex-shrink-0 img-fluid rounded" src="img/menu-8.jpg" alt="" style="width: 80px;">
-                                            <div class="w-100 d-flex flex-column text-start ps-4">
-                                                <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                                    <span></span>
-                                                    <span class="text-primary"> Euros</span>
-                                                </h5>
-                                                <small class="fst-italic">  </small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div id="tab-2" class="tab-pane fade show p-0" >
-                                
                                 <br>
-                            </div>
-                            </div>
-                            <div id="tab-3" class="tab-pane fade show p-0">
-                                
+                                </div>
+
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-      </div>`,
+                    <a href="" class="btn btn-primary py-sm-3 px-sm-5 me-3 animated slideInLeft">Menu del dia</a> 
+            </div>`,
   methods: {
-    buscarMenu: async function (type) {
-      await fetch(
-        "http://localhost:8080/rest/js/backend/menulist.php?type=" + type
-      )
+    buscarMenu: function (type) {
+      fetch("http://localhost:8080/rest/js/backend/menulist.php?type=" + type, {
+        mode: "cors",
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+        },
+      })
         .then((response) => response.json())
         .then((data) => {
-          this.list = console.log(data);
+          this.list = data;
         });
     },
   },
@@ -660,108 +606,13 @@ Vue.component("cont", {
 });
 
 const home = Vue.component("home", {
-  data: function () {
-    return {
-      list: [],
-      cat: [],
-      len: 0,
-      type: "Ensaladas",
-    };
-  },
-  async mounted() {
-    await fetch(
-      "http://localhost:8080/rest/js/backend/menulist.php?type=" + this.type,
-      {
-        mode: "cors",
-        headers: {
-          "Access-Control-Allow-Origin": "*",
-        },
-      }
-    )
-      .then((response) => response.json())
-      .then((menu) => (this.list = menu));
-
-    await fetch("http://localhost:8080/rest/js/backend/categoria.php", {
-      mode: "cors",
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => (this.cat = data));
-    //   <i class="fa fa-coffee fa-2x text-primary"></i>
-  },
   template: `<div>
         <navbar></navbar>
         <about></about>
-        <div class="py-5">
-                <div class="container">
-                    <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                        <h5 class="section-title ff-secondary text-center text-primary fw-normal">Food Menu</h5>
-                        <h1 class="mb-5">Most Popular Items</h1>
-                    </div>
-                    <div class="tab-class text-center wow fadeInUp" data-wow-delay="0.1s">
-                        <ul class="nav nav-pills d-inline-flex justify-content-center border-bottom mb-5" v-for="c in cat.length" >
-                            <li class="nav-item">
-                                <a @click="buscarMenu(cat[c-1].Categoria)" class="d-flex align-items-center text-start mx-6 ms-0 pb-3 " data-bs-toggle="pill" href="#tab-1">
-                                    <div class="ps-3">
-                                        <small class="text-body"></small>
-                                        <h6 class="mt-n1 mb-0">{{cat[c-1].Categoria}}</h6>
-                                    </div>
-                                </a>
-                            </li>
-                        </ul>
-                        <div class="tab-content">
-                            <div id="tab-1" class="tab-pane fade show p-0 active" v-for="i in list.length" >
-                                <div class="row g-4"  v-if="(i%2) == '1'" >
-                                    <div class="col-lg-6" >
-                                        <div class="d-flex align-items-center">
-                                            <img class="flex-shrink-0 img-fluid rounded" src="img/menu-8.jpg" alt="" style="width: 80px;">
-                                            <div class="w-100 d-flex flex-column text-start ps-4">
-                                                <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                                    <span>{{ list[i-1].nombre }}</span>
-                                                    <span class="text-primary"> {{ list[i-1].precio_ }}  Euros</span>
-                                                </h5>
-                                                <small class="fst-italic"> {{ list[i-1].descripcion }}  </small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6" v-if="(i+1) <= list.length">
-                                        <div class="d-flex align-items-center">
-                                            <img class="flex-shrink-0 img-fluid rounded" src="img/menu-8.jpg" alt="" style="width: 80px;">
-                                            <div class="w-100 d-flex flex-column text-start ps-4">
-                                                <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                                    <span>{{ list[i].nombre }} </span>
-                                                    <span class="text-primary"> {{ list[i].precio_ }}€</span>
-                                                </h5>
-                                                <small class="fst-italic"> {{ list[i].descripcion }}</small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <br>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <menulist></menulist>
         <testi></testi>
         <foot></foot>
         </div>`,
-  methods: {
-    buscarMenu: function (type) {
-      fetch("http://localhost:8080/rest/js/backend/menulist.php?type=" + type, {
-        mode: "cors",
-        headers: {
-          "Access-Control-Allow-Origin": "*",
-        },
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          this.list = data;
-        });
-    },
-  },
 });
 
 const booking = Vue.component("reserva", {
