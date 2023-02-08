@@ -2,7 +2,7 @@
 
 Booking unlimited [normal]
 
-Pedido online: Glovo y Justeat
+Pedido online: Glovo y Justeat <b>HECHO</b>
 
 Menu del dia / Menu Finde [PDF/IMG]
 
