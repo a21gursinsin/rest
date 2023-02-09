@@ -31,8 +31,7 @@ Vue.component("navbar", {
                         <p class="text-white animated slideInLeft mb-4 pb-2">En milagros disfrutad todos los días de la semana de la oferta de ocio. Comidas y cenas, vermuts, cervezas, copas y juerga. </p>
                         <a v-b-modal.p-online class="btn btn-primary py-sm-3 px-sm-5 me-3 mb-2 w-50 animated slideInRight">Pedido Online</a> 
                         <a href="" class="btn btn-light py-sm-3 px-sm-5 me-3 mb-2 w-50 animated slideInLeft">Reservar Mesa</a>
-                        <a href="" class="btn btn-primary py-sm-3 px-sm-5 me-3 mb-2 w-50 animated slideInRight">Menu del dia</a>
-                        <a href="" class="btn btn-light py-sm-3 px-sm-5 me-3 mb-2 w-50 animated slideInLeft">Menu del dia</a>    
+                        <a href="" class="btn btn-primary py-sm-3 px-sm-5 me-3 mb-2 w-50 animated slideInRight">Menu del dia</a> 
                     </div>
                     <div class="col-lg-6 text-center text-lg-end overflow-hidden">
                         <img class="img-fluid" src="img/hero.png" alt=""><br>
@@ -399,7 +398,7 @@ Vue.component("menulist", {
                                                         <span>{{ list[i-1].nombre }}</span>
                                                         <span class="text-primary"> {{ list[i-1].precio_ }}€</span>
                                                     </h5>
-                                                    <small class="fst-italic"> {{ list[i-1].descripcion }}  </small>
+                                                    <small class="fst-italic"> <i class="{list[i-1].descripcion}"></i> {{ list[i-1].descripcion }}  </small>
                                                 </div>
                                             </div>
                                         </div>
