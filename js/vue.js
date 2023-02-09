@@ -382,8 +382,8 @@ Vue.component("menulist", {
                             <ul class="nav nav-pills d-inline-flex justify-content-center border-bottom mb-5" v-for="c in cat.length" >
                                 <li class="nav-item">
                                     <a @click="buscarMenu(cat[c-1].Categoria)" class="btn btn-primary py-sm-3 px-sm-3 me-2" data-bs-toggle="pill" href="#tab-1">
-                                        <div class="ps-3">
-                                            <h6 class="mb-0"><<font-awesome-icon icon="cat[c-1].icons" /> {{cat[c-1].Categoria}}</h6>
+                                        <div class="ps-3">d
+                                            <h6 class="mb-0"><font-awesome-icon icon="cat[c-1].icons" /> {{cat[c-1].Categoria}}</h6>
                                         </div>
                                     </a>
                                 </li>
