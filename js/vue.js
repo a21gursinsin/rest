@@ -337,7 +337,7 @@ Vue.component("menulist", {
       }
     )
       .then((response) => response.json())
-      .then((menu) => (this.list = CONSOLE.LOG(menu)));
+      .then((menu) => (this.list = menu));
 
     await fetch(
       "http://singh.alumnes.inspedralbes.cat/js/backend/categoria.php",
@@ -366,7 +366,7 @@ Vue.component("menulist", {
       )
         .then((response) => response.json())
         .then((data) => {
-          this.list = console.log(data);
+          this.list = data;
         });
     },
   },
@@ -383,7 +383,7 @@ Vue.component("menulist", {
                                 <li class="nav-item">
                                     <a @click="buscarMenu(cat[c-1].Categoria)" class="btn btn-primary py-sm-3 px-sm-3 me-2" data-bs-toggle="pill" href="#tab-1">
                                         <div class="ps-3">
-                                            <h6 class="mb-0"><i class="{{ cat[c-1].icons }}"></i> {{cat[c-1].Categoria}}</h6>
+                                            <h6 class="mb-0"><i class="{{cat[c-1].icons }}"></i> {{cat[c-1].Categoria}}</h6>
                                         </div>
                                     </a>
                                 </li>
@@ -417,7 +417,7 @@ Vue.component("menulist", {
                                         </div>
                                     </div>
                                 </div>
-                                <br>
+                                    <br>
                                 </div> 
                             </div>
                         </div>
