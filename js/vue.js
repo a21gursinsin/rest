@@ -30,7 +30,7 @@ Vue.component("navbar", {
                     <div class="col-lg-6 text-center text-lg-start">
                         <h1 class="display-3 text-white animated slideInLeft">Bienvenidos</h1>
                         <p class="text-white animated slideInLeft mb-4 pb-2">En milagros disfrutad todos los días de la semana de la oferta de ocio. Comidas y cenas, vermuts, cervezas, copas y juerga. </p>
-                        <a href="" class="btn btn-primary py-sm-3 px-sm-5 me-3 mb-2 w-50 animated slideInRight">Pedido Online</a> 
+                        <a v-b-modal.p-online class="btn btn-primary py-sm-3 px-sm-5 me-3 mb-2 w-50 animated slideInRight">Pedido Online</a> 
                         <a href="" class="btn btn-light py-sm-3 px-sm-5 me-3 mb-2 w-50 animated slideInLeft">Reservar Mesa</a>
                         <a href="" class="btn btn-primary py-sm-3 px-sm-5 me-3 mb-2 w-50 animated slideInRight">Menu del dia</a>
                         <a href="" class="btn btn-light py-sm-3 px-sm-5 me-3 mb-2 w-50 animated slideInLeft">Menu del dia</a>    
@@ -42,7 +42,33 @@ Vue.component("navbar", {
             </div>
         </div>
     </div>
-    <b-modal id="about" size="xl" title="Sobre Nosotros">
+    <b-modal id="p-online" size="xl" hide-footer title="Pedido Online">
+        <div class="row">
+            <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                <a href="https://glovoapp.com/es/es/barcelona/restaurante-milagros-barcelona/?utm_source=google&utm_medium=cpc&utm_campaign=google_performance_ES_BCN_Search_cpa_All_FirstOrder_0_NewUsers_es__DigitalBudget_NoPromo_0_12012021&utm_campaignid=1623072654&utm_adgroupid=136291609158&utm_term&utm_matchtype&utm_device=c&gclid=CjwKCAiArY2fBhB9EiwAWqHK6ungY1QK_QKEmnG0ZzhnftujcUXQBPtzipDne0cNVIN07Z8TVEFj1RoCTE8QAvD_BwE" target="_blank">
+                    <img class="img-fluid" src="img/glovo.png" alt="" style="height: "><br>
+                </a>
+                <h5 class="card-title">Glovo</h5>
+                <a href="https://glovoapp.com/es/es/barcelona/restaurante-milagros-barcelona/?utm_source=google&utm_medium=cpc&utm_campaign=google_performance_ES_BCN_Search_cpa_All_FirstOrder_0_NewUsers_es__DigitalBudget_NoPromo_0_12012021&utm_campaignid=1623072654&utm_adgroupid=136291609158&utm_term&utm_matchtype&utm_device=c&gclid=CjwKCAiArY2fBhB9EiwAWqHK6ungY1QK_QKEmnG0ZzhnftujcUXQBPtzipDne0cNVIN07Z8TVEFj1RoCTE8QAvD_BwE" class="btn btn-primary w-100" target="_blank">Pide un Glovo</a>
+                </div>
+            </div>
+            </div>
+            <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                <a href="https://www.just-eat.es/restaurants-restaurante-milagros-08902/menu" target="_blank" >
+                    <img class="img-fluid" src="img/justeat.png" alt=""><br>
+                    </a>
+                <h5 class="card-title text-align-center">Justeat</h5>
+                <a href="https://www.just-eat.es/restaurants-restaurante-milagros-08902/menu" target="_blank" class="btn btn-primary w-100">Pide un Justeat</a>
+                </div>
+            </div>
+            </div>
+        </div>
+    </b-modal>
+    <b-modal id="about" size="xl" hide-footer title="Sobre Nosotros">
         <about></about>
     </b-modal>
     <b-modal id="service" size="xl" hide-footer title="Servicios">
@@ -203,7 +229,7 @@ Vue.component("team", {
                           <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
                               <div class="team-item text-center rounded overflow-hidden">
                                   <div class="rounded-circle overflow-hidden m-4">
-                                      <img class="img-fluid" src="img/team-1.jpeg" alt="">
+                                      <img class="img-fluid" src="img/team-3.jpeg" alt="">
                                   </div>
                                   <h5 class="mb-0">Full Name</h5>
                                   <small>Designation</small>
@@ -217,7 +243,7 @@ Vue.component("team", {
                           <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.7s">
                               <div class="team-item text-center rounded overflow-hidden">
                                   <div class="rounded-circle overflow-hidden m-4">
-                                      <img class="img-fluid" src="img/team-2.jpeg" alt="">
+                                      <img class="img-fluid" src="img/team-4.jpg" alt="">
                                   </div>
                                   <h5 class="mb-0">Full Name</h5>
                                   <small>Designation</small>
@@ -244,7 +270,7 @@ Vue.component("about", {
                                     <img class="img-fluid rounded w-100 wow zoomIn" data-wow-delay="0.1s" src="img/about-1.jpg">
                                 </div>
                                 <div class="col-6 text-start">
-                                    <img class="img-fluid rounded w-75 wow zoomIn" data-wow-delay="0.3s" src="img/about-2.jpg" style="margin-top: 25%;">
+                                    <img class="img-fluid rounded w-75 wow zoomIn" data-wow-delay="0.3s" src="img/about-2.jpeg" style="margin-top: 25%;">
                                 </div>
                                 <div class="col-6 text-end">
                                     <img class="img-fluid rounded w-75 wow zoomIn" data-wow-delay="0.5s" src="img/about-3.jpg">
@@ -372,10 +398,6 @@ Vue.component("menulist", {
                                 </div>
                                 <br>
                                 </div> 
-                                <a href="" class="btn btn-primary py-sm-3 px-sm-5 me-3 ml-5 animated slideInRight">Pedido Online</a>
-                                <a href="" class="btn btn-primary py-sm-3 px-sm-5 me-3  animated slideInLeft">Reservar Mesa</a>
-                                <a href="" class="btn btn-primary py-sm-3 px-sm-5 me-3  animated slideInRight">Menu del dia</a>
-                                <a href="" class="btn btn-primary py-sm-3 px-sm-5 me-3  animated slideInLeft">Menu del dia</a>  
                             </div>
                         </div>
                     </div>
@@ -406,27 +428,30 @@ Vue.component("testi", {
     };
   },
   async mounted() {
-    await fetch(
-      "http://localhost:8080/rest/js/backend/menulist.php?type=" + this.type,
-      {
-        mode: "cors",
-        headers: {
-          "Access-Control-Allow-Origin": "*",
+    (function ($) {
+      "use strict";
+      // Testimonials carousel
+      $(".testimonial-carousel").owlCarousel({
+        autoplay: true,
+        smartSpeed: 1000,
+        center: true,
+        margin: 24,
+        dots: true,
+        loop: true,
+        nav: false,
+        responsive: {
+          0: {
+            items: 1,
+          },
+          768: {
+            items: 2,
+          },
+          992: {
+            items: 3,
+          },
         },
-      }
-    )
-      .then((response) => response.json())
-      .then((menu) => (this.list = menu));
-
-    await fetch("http://localhost:8080/rest/js/backend/categoria.php", {
-      mode: "cors",
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => (this.cat = data));
-    //   <i class="fa fa-coffee fa-2x text-primary"></i>
+      });
+    })(jQuery);
   },
 
   template: `<div>
@@ -740,8 +765,43 @@ const contact = Vue.component("contacto", {
 
 const m = Vue.component("comida", {
   template: `<div>
-              <navbarside></navbarside>
+                <div class="position-relative p-0">
+                <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4 px-lg-5 py-3 py-lg-0">
+                    <a href="" class="navbar-brand p-0">
+                        <h1 class="text-primary m-0"><i class="fa fa-utensils me-3"></i>Restaurant</h1>
+                        <!-- <img src="img/logo.png" alt="Logo"> -->
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                        <span class="fa fa-bars"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarCollapse">
+                        <div class="navbar-nav ms-auto py-0 pe-4">
+                            <router-link to="/"><a class="nav-item nav-link">Home</a></router-link>
+                            <router-link to="/eat"><a  class="nav-item nav-link active"  >Menu</a></router-link>
+                            <router-link to="/booking"><a class="nav-item nav-link ">Reserva</a></router-link>
+                            <router-link to="/contact"><a class="nav-item nav-link ">Contacto</a></router-link>
+                        </div>
+                    </div>
+                </nav>
+                <div class="py-5 bg-dark hero-header mb-5">
+                    <div class="container text-center my-5 pt-5 pb-4">
+                        <h1 class="display-3 text-white mb-3 animated slideInDown">Menu</h1>
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb justify-content-center text-uppercase">
+                                <li class="breadcrumb-item">Home</li>
+                                <li class="breadcrumb-item">Pagina</li>
+                                <li class="breadcrumb-item text-white active"">MenU</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+                </div>
+  
               <menulist></menulist>
+              <div class="container text-center">
+              <router-link to="/booking"><a class="btn btn-primary py-sm-3 px-sm-5 me-3 mb-2 w-25 animated slideInLeft ">Reservar</a></router-link>
+              <a v-b-modal.p-online class="btn btn-primary py-sm-3 px-sm-5 me-3 mb-2 w-25 animated slideInRight">Pedido Online</a>
+              </div>
               <foot></foot>
               </div>`,
   data: function () {
