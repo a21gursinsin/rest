@@ -15,7 +15,6 @@ Vue.component("navbar", {
                     <a v-b-modal.about class="nav-item nav-link" >Nosotros</a>
                     <a v-b-modal.service class="nav-item nav-link">Servicios</a>
                     <router-link to="/eat"><a class="nav-item nav-link">Menú</a></router-link>
-                    <router-link to="/booking"><a class="nav-item nav-link">Reserva</a></router-link>
                     <a href="testimonial.html"class="nav-item nav-link">Reseñas</a>
                     <router-link to="/contact"><a class="nav-item nav-link">Contacto</a></router-link>
                     
@@ -328,7 +327,8 @@ Vue.component("menulist", {
   },
   async mounted() {
     await fetch(
-      "http://localhost:8080/rest/js/backend/menulist.php?type=" + this.type,
+      "http://singh.alumnes.inspedralbes.cat/js/backend/menulist.php?type=" +
+        this.type,
       {
         mode: "cors",
         headers: {
@@ -339,15 +339,36 @@ Vue.component("menulist", {
       .then((response) => response.json())
       .then((menu) => (this.list = menu));
 
-    await fetch("http://localhost:8080/rest/js/backend/categoria.php", {
-      mode: "cors",
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-      },
-    })
+    await fetch(
+      "http://singh.alumnes.inspedralbes.cat/js/backend/categoria.php",
+      {
+        mode: "cors",
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+        },
+      }
+    )
       .then((response) => response.json())
       .then((data) => (this.cat = data));
     //   <i class="fa fa-coffee fa-2x text-primary"></i>
+  },
+  methods: {
+    buscarMenu: function (type) {
+      fetch(
+        "http://singh.alumnes.inspedralbes.cat/js/backend/menulist.php?type=" +
+          type,
+        {
+          mode: "cors",
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+          },
+        }
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          this.list = data;
+        });
+    },
   },
   template: `<div>
   
@@ -402,20 +423,6 @@ Vue.component("menulist", {
                         </div>
                     </div>
             </div>`,
-  methods: {
-    buscarMenu: function (type) {
-      fetch("http://localhost:8080/rest/js/backend/menulist.php?type=" + type, {
-        mode: "cors",
-        headers: {
-          "Access-Control-Allow-Origin": "*",
-        },
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          this.list = data;
-        });
-    },
-  },
 });
 
 Vue.component("testi", {
@@ -507,7 +514,7 @@ Vue.component("testi", {
                             </div>
                         </div>
                     </div>
-                    <a href="" class="btn btn-primary py-sm-3 px-sm-5 me-3 w-100 mt-5 animated slideInLeft">Contacto</a>
+                    <a href="https://g.page/r/CSxgNcxUn-qrEBM/review" class="btn btn-primary py-sm-3 px-sm-5 me-3 w-100 mt-5 animated slideInLeft">Dejanos un Comentario</a>
                 </div>
                 
             </div>
