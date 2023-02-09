@@ -349,6 +349,7 @@ Vue.component("menulist", {
     )
       .then((response) => response.json())
       .then((data) => (this.cat = data));
+    console.log(this.cat);
     //   <i class="fa fa-coffee fa-2x text-primary"></i>
   },
   methods: {
