@@ -383,7 +383,7 @@ Vue.component("menulist", {
                                 <li class="nav-item">
                                     <a @click="buscarMenu(cat[c-1].Categoria)" class="btn btn-primary py-sm-3 px-sm-3 me-2" data-bs-toggle="pill" href="#tab-1">
                                         <div class="ps-3">
-                                            <h6 class="mb-0"><font-awesome-icon icon="fa-solid fa-wheelchair" /> {{cat[c-1].Categoria}}</h6>
+                                            <h6 class="mb-0"><i :class="cat[c-1].icons"></i> {{cat[c-1].Categoria}}</h6>
                                         </div>
                                     </a>
                                 </li>
