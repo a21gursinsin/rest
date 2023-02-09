@@ -366,7 +366,7 @@ Vue.component("menulist", {
       )
         .then((response) => response.json())
         .then((data) => {
-          this.list = data;
+          this.list = console.log(data);
         });
     },
   },
