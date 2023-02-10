@@ -624,13 +624,12 @@ Vue.component("reservation", {
       enviar.append("personas", this.form.personas);
       enviar.append("comentari", this.form.comentari);
 
-      await fetch(
-        "http://singh.alumnes.inspedralbes.cat/js/backend/reserva.php",
-        {
-          method: "POST",
-          body: enviar,
-        }
-      ).then((response) => response.json());
+      const url =
+        "http://singh.alumnes.inspedralbes.cat/js/backend/reserva.php";
+      await fetch(url, {
+        method: "POST",
+        body: enviar,
+      }).then((response) => response.json());
       //     .then((data) => console.log(data));
 
       //   if (this.data2[0] == "done") {
