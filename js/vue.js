@@ -624,7 +624,7 @@ Vue.component("reservation", {
       enviar.append("personas", this.form.personas);
       enviar.append("comentari", this.form.comentari);
 
-      fetch("./backend/reserva.php", {
+      fetch("http://singh.alumnes.inspedralbes.cat/js/backend/reserva.php", {
         method: "POST",
         body: enviar,
       })
