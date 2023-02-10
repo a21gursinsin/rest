@@ -321,7 +321,7 @@ Vue.component("menulist", {
       list: [],
       cat: [],
       len: 0,
-      type: "Ensaladas",
+      type: "",
     };
   },
   async mounted() {
