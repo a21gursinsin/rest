@@ -46,7 +46,7 @@ if (empty($nombre) || empty($mail) || empty($dia) || empty($hora) || empty($pers
 
         $result = mysqli_query($connect, $sql) or die("Error in Selecting " . mysqli_error($connect));
 
-        // enviarcorreo($nombre, $mail, $dia, $hora, $personas, $comentari);
+        enviarcorreo($nombre, $mail, $dia, $hora, $personas, $comentari);
 
 
         while ($row = mysqli_fetch_assoc($result)) {

@@ -649,7 +649,6 @@ Vue.component("reservation", {
           footer: '<a href="">Why do I have this issue?</a>',
         });
       } else {
-        console.log(this.result[0].id);
         Swal.fire({
           position: "top-end",
           icon: "success",
@@ -658,12 +657,13 @@ Vue.component("reservation", {
             "Muchas gracias <b>" +
             this.result[0].nombre +
             "</b>" +
-            "<br>En continuación les llegará un correo de Reserva<br>" +
+            "<br>En continuación les llegará un correo de Reserva<br> " +
             this.result[0].mail +
             "Cualquier consulta ponga en contacto con Atención al cliente ",
           footer:
             '<a class="btn btn-primary py-sm-3 px-sm-5 w-50 animated slideInLeft" href="tel:+34 933 60 68 24">LLamar Fijo</a><a class="btn btn-info py-sm-3 px-sm-5 ml-1 w-50  animated slideInLeft" href="tel:+34 632 33 53 56">Llamar Movil</a>',
         });
+        location.reload();
       }
     },
   },
