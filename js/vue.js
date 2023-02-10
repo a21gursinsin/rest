@@ -522,55 +522,6 @@ Vue.component("testi", {
 });
 
 Vue.component("reservation", {
-  data: function () {
-    return {
-      data2: null,
-      form: {
-        nombre: "",
-        mail: "",
-        dia: "",
-        hora: "",
-        personas: "",
-        comentari: "",
-      },
-    };
-  },
-  methods: {
-    async submitReserva() {
-      const enviar = new FormData();
-      enviar.append("nombre", this.form.nombre);
-      enviar.append("mail", this.form.mail);
-      enviar.append("tiempo", this.form.dia);
-      enviar.append("tiempo", this.form.hora);
-      enviar.append("personas", this.form.personas);
-      enviar.append("comentari", this.form.comentari);
-
-      await fetch(
-        "http://singh.alumnes.inspedralbes.cat/js/backend/reserva.php",
-        {
-          method: "POST",
-          body: enviar,
-        }
-      )
-        .then((response) => response.json())
-        .then((data) => (this.data2 = console.log(data)));
-
-      if (this.data2[0] == "done") {
-        Swal.fire(
-          "Reserva Enviada",
-          "En continuación le llegara un correo de Reserva",
-          'Cualquier Consulta ponga en contacto con Atención al cliente <a href="tel:+34 933 60 68 24">LLamar Fijo</a><a href="tel:+34 632 33 53 56">Llamar Movil</a>'
-        );
-      } else {
-        Swal.fire({
-          icon: "error",
-          title: "Oops...",
-          text: "Something went wrong!",
-          footer: '<a href="">Why do I have this issue?</a>',
-        });
-      }
-    },
-  },
   template: `<div>
             <div class="py-5 px-0 wow fadeInUp" data-wow-delay="0.1s" >
                 <div class="row g-0">
@@ -650,6 +601,52 @@ Vue.component("reservation", {
                 </div>
             </div>
             </div>`,
+  data: function () {
+    return {
+      result: null,
+      form: {
+        nombre: "",
+        mail: "",
+        dia: "",
+        hora: "",
+        personas: "",
+        comentari: "",
+      },
+    };
+  },
+  methods: {
+    submitReserva() {
+      const enviar = new FormData();
+      enviar.append("nombre", this.form.nombre);
+      enviar.append("mail", this.form.mail);
+      enviar.append("tiempo", this.form.dia);
+      enviar.append("tiempo", this.form.hora);
+      enviar.append("personas", this.form.personas);
+      enviar.append("comentari", this.form.comentari);
+
+      fetch("./backend/reserva.php", {
+        method: "POST",
+        body: enviar,
+      })
+        .then((response) => response.json())
+        .then((data) => (this.result = console.log(data)));
+
+      if (this.data2[0] == "done") {
+        Swal.fire(
+          "Reserva Enviada",
+          "En continuación le llegara un correo de Reserva",
+          'Cualquier Consulta ponga en contacto con Atención al cliente <a href="tel:+34 933 60 68 24">LLamar Fijo</a><a href="tel:+34 632 33 53 56">Llamar Movil</a>'
+        );
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Something went wrong!",
+          footer: '<a href="">Why do I have this issue?</a>',
+        });
+      }
+    },
+  },
 });
 
 Vue.component("cont", {
