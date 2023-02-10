@@ -14,14 +14,14 @@ if (empty($nombre) || empty($mail) || empty($dia) || empty($hora) || empty($pers
     $resultat[] = "err";
 } else {
 
-    // $sql = "INSERT INTO `Reserva`(`nombre`, `mail`, `dia`, `hora`, `personas`, `comentari`, `createTime`) 
-    // VALUES ('$nombre','$mail','$dia','$hora',$personas,'$comentari',CURRENT_TIMESTAMP)";
+    $sql = "INSERT INTO `Reserva`(`nombre`, `mail`, `dia`, `hora`, `personas`, `comentari`, `createTime`) 
+    VALUES ('$nombre','$mail','$dia','$hora',$personas,'$comentari',CURRENT_TIMESTAMP)";
 
-    // if (mysqli_query($connect, $sql)) {
-    //     $resultat[] = 'done';
-    // } else {
-    //     $resultat[] = 'err2';
-    // }
+    if (mysqli_query($connect, $sql)) {
+        $resultat[] = 'done';
+    } else {
+        $resultat[] = 'err2';
+    }
     $resultat[] = "ok";
 }
 echo json_encode($resultat);
