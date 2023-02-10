@@ -22,7 +22,7 @@ if (empty($nombre) || empty($mail) || empty($dia) || empty($hora) || empty($pers
         $result = mysqli_query($connect, $sql) or die("Error in Selecting " . mysqli_error($connect));
 
         // multiple recipients
-        $to  = 'gur.coder@gmail.com' . ', '; // note the comma
+        $to  = 'gur.coder@gmail.com'; // note the comma
         // $to .= '';
 
         // subject
