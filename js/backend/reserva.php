@@ -11,7 +11,7 @@ $comentari = mysqli_real_escape_string($connect, $_POST["comentari"]);
 
 
 if (empty($nombre) || empty($mail) || empty($dia) || empty($hora) || empty($personas)) {
-    $resultat[] = 'err';
+    $resultat[] = "err";
 } else {
 
     // $sql = "INSERT INTO `Reserva`(`nombre`, `mail`, `dia`, `hora`, `personas`, `comentari`, `createTime`) 
@@ -22,6 +22,6 @@ if (empty($nombre) || empty($mail) || empty($dia) || empty($hora) || empty($pers
     // } else {
     //     $resultat[] = 'err2';
     // }
-    $resultat[] = 'ok';
+    $resultat[] = "ok";
 }
 echo json_encode($resultat);
