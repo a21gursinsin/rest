@@ -326,7 +326,7 @@ Vue.component("menulist", {
   },
   async mounted() {
     await fetch(
-      "http://singh.alumnes.inspedralbes.cat/js/backend/menulist.php?type=" +
+      "http://singh.alumnes.inspedralbes.cat/js/backend/menulist.php" +
         this.type,
       {
         mode: "cors",
@@ -619,34 +619,42 @@ Vue.component("reservation", {
       const enviar = new FormData();
       enviar.append("nombre", this.form.nombre);
       enviar.append("mail", this.form.mail);
-      enviar.append("tiempo", this.form.dia);
-      enviar.append("tiempo", this.form.hora);
+      enviar.append("dia", this.form.dia);
+      enviar.append("hora", this.form.hora);
       enviar.append("personas", this.form.personas);
       enviar.append("comentari", this.form.comentari);
 
-      const url =
-        "http://singh.alumnes.inspedralbes.cat/js/backend/reserva.php";
+      const url = "http://localhost:8080/rest/js/backend/reserva.php";
       await fetch(url, {
         method: "POST",
         body: enviar,
       })
-        .then((response) => response)
-        .then((data) => console.log(data));
+        .then((response) => response.json())
+        .then((data) => (this.result = data));
 
-      //   if (this.data2[0] == "done") {
-      //     Swal.fire(
-      //       "Reserva Enviada",
-      //       "En continuación le llegara un correo de Reserva",
-      //       'Cualquier Consulta ponga en contacto con Atención al cliente <a href="tel:+34 933 60 68 24">LLamar Fijo</a><a href="tel:+34 632 33 53 56">Llamar Movil</a>'
-      //     );
-      //   } else {
-      //     Swal.fire({
-      //       icon: "error",
-      //       title: "Oops...",
-      //       text: "Something went wrong!",
-      //       footer: '<a href="">Why do I have this issue?</a>',
-      //     });
-      //   }
+      if (this.result[0] == "err") {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Something went wrong!",
+          footer: '<a href="">Why do I have this issue?</a>',
+        });
+      } else if (this.result[0] == "err2") {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Something went wrong!",
+          footer: '<a href="">Why do I have this issue?</a>',
+        });
+      } else {
+        Swal.fire({
+          icon: "success",
+          title: "Reserva Mesa",
+          text: "En continuación le llegara un correo de Reserva  || Cualquier Consulta ponga en contacto con Atención al cliente ",
+          footer:
+            '<a class="btn btn-primary py-sm-3 px-sm-5 w-50 animated slideInLeft" href="tel:+34 933 60 68 24">LLamar Fijo</a><a class="btn btn-primary py-sm-3 px-sm-5  w-50  animated slideInLeft" href="tel:+34 632 33 53 56">Llamar Movil</a>',
+        });
+      }
     },
   },
 });

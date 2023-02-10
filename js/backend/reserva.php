@@ -9,7 +9,6 @@ $hora = mysqli_real_escape_string($connect, $_POST["hora"]);
 $personas = mysqli_real_escape_string($connect, $_POST["personas"]);
 $comentari = mysqli_real_escape_string($connect, $_POST["comentari"]);
 
-
 if (empty($nombre) || empty($mail) || empty($dia) || empty($hora) || empty($personas)) {
     $resultat[] = "err";
 } else {
@@ -18,10 +17,18 @@ if (empty($nombre) || empty($mail) || empty($dia) || empty($hora) || empty($pers
     VALUES ('$nombre','$mail','$dia','$hora',$personas,'$comentari',CURRENT_TIMESTAMP)";
 
     if (mysqli_query($connect, $sql)) {
-        $resultat[] = 'done';
+        $sql = "Select * from Reserva where mail like '{$mail}'  order by createTime DESC, id DESC;";
+
+        $result = mysqli_query($connect, $sql) or die("Error in Selecting " . mysqli_error($connect));
+
+        while ($row = mysqli_fetch_assoc($result)) {
+            $resultat[] = $row;
+        }
     } else {
         $resultat[] = 'err2';
     }
-    $resultat[] = "ok";
 }
 echo json_encode($resultat);
+
+//close the db connection
+mysqli_close($connection);
