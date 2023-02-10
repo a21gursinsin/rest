@@ -619,8 +619,8 @@ Vue.component("reservation", {
       const enviar = new FormData();
       enviar.append("nombre", this.form.nombre);
       enviar.append("mail", this.form.mail);
-      enviar.append("tiempo", this.form.dia);
-      enviar.append("tiempo", this.form.hora);
+      //   enviar.append("tiempo", this.form.dia);
+      //   enviar.append("tiempo", this.form.hora);
       enviar.append("personas", this.form.personas);
       enviar.append("comentari", this.form.comentari);
 

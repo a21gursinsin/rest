@@ -4,8 +4,8 @@ $connect = include_once("./config.php");
 
 $nombre = mysqli_real_escape_string($connect, $_POST["nombre"]);
 $mail = mysqli_real_escape_string($connect, $_POST["mail"]);
-$dia = mysqli_real_escape_string($connect, $_POST["dia"]);
-$hora = mysqli_real_escape_string($connect, $_POST["hora"]);
+// $dia = mysqli_real_escape_string($connect, $_POST["dia"]);
+// $hora = mysqli_real_escape_string($connect, $_POST["hora"]);
 $personas = mysqli_real_escape_string($connect, $_POST["personas"]);
 $comentari = mysqli_real_escape_string($connect, $_POST["comentari"]);
 
