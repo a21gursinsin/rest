@@ -68,6 +68,7 @@ Vue.component("navbar", {
     </b-modal>
     <b-modal id="about" size="xl" hide-footer title="Sobre Nosotros">
         <about></about>
+        <team></team>
     </b-modal>
     <b-modal id="service" size="xl" hide-footer title="Servicios">
         <service></service>
@@ -311,7 +312,6 @@ Vue.component("about", {
                     </div>
                 </div>
             </div>
-            <team></team>
       </div>`,
 });
 
@@ -383,7 +383,7 @@ Vue.component("menulist", {
                                 <li class="nav-item">
                                     <a @click="buscarMenu(cat[c-1].Categoria)" class="btn btn-primary py-sm-3 px-sm-3 me-2" data-bs-toggle="pill" href="#tab-1">
                                         <div class="ps-3">
-                                            <h6 class="mb-0"><i :class="cat[c-1].icons"></i> {{cat[c-1].Categoria}}</h6>
+                                            <h6 class="mb-0">{{cat[c-1].Categoria}}</h6>
                                         </div>
                                     </a>
                                 </li>
@@ -522,6 +522,52 @@ Vue.component("testi", {
 });
 
 Vue.component("reservation", {
+  data: function () {
+    return {
+      data2: null,
+      form: {
+        nombre: "",
+        mail: "",
+        dia: "",
+        hora: "",
+        personas: "",
+        comentari: "",
+      },
+    };
+  },
+  methods: {
+    async submitReserva() {
+      const enviar = new FormData();
+      enviar.append("nombre", this.form.nombre);
+      enviar.append("mail", this.form.mail);
+      enviar.append("tiempo", this.form.dia);
+      enviar.append("tiempo", this.form.hora);
+      enviar.append("personas", this.form.personas);
+      enviar.append("comentari", this.form.comentari);
+
+      await fetch("http://localhost:8080/rest/js/backend/reserva.php", {
+        method: "POST",
+        body: enviar,
+      })
+        .then((response) => response.json())
+        .then((data) => (this.data2 = console.log(data)));
+
+      if (this.data2[0] == "done") {
+        Swal.fire(
+          "Reserva Enviada",
+          "En continuación le llegara un correo de Reserva",
+          'Cualquier Consulta ponga en contacto con Atención al cliente <a href="tel:+34 933 60 68 24">LLamar Fijo</a><a href="tel:+34 632 33 53 56">Llamar Movil</a>'
+        );
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Something went wrong!",
+          footer: '<a href="">Why do I have this issue?</a>',
+        });
+      }
+    },
+  },
   template: `<div>
             <div class="py-5 px-0 wow fadeInUp" data-wow-delay="0.1s" >
                 <div class="row g-0">
@@ -540,40 +586,42 @@ Vue.component("reservation", {
                                 <div class="row g-3">
                                     <div class="col-md-6">
                                         <div class="form-floating">
-                                            <input type="text" class="form-control" id="name" placeholder="Your Name">
+                                            <input type="text" class="form-control" id="name" placeholder="Your Name"  v-model="form.nombre" required >
                                             <label for="name">Your Name</label>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-floating">
-                                            <input type="email" class="form-control" id="email" placeholder="Your Email">
+                                            <input type="email" class="form-control" id="email" placeholder="Your Email"  v-model="form.mail" required >
                                             <label for="email">Your Email</label>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-floating date" id="date3" data-target-input="nearest">
-                                            <input type="text" class="form-control datetimepicker-input" id="datetime" placeholder="Date & Time" data-target="#date3" data-toggle="datetimepicker" />
-                                            <label for="datetime">Date & Time</label>
+                                            <input type="date" class="form-control " id="date" placeholder="Dia"  v-model="form.dia" required pattern="\d{4}-\d{2}-\d{2}"/>
+                                            <label for="date">Dia</label>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
+                                        <div class="form-floating date" id="date3" data-target-input="nearest">
+                                            <input type="time" class="form-control " id="hora" placeholder="Hora"  v-model="form.hora" min="11:00" max="23:00" required/>
+                                            <label for="hora">Hora <small>Abierto de 11h hasta 23h</small></label>
+                                        </div>
+                                    </div>
+                                    <div >
                                         <div class="form-floating">
-                                            <select class="form-select" id="select1">
-                                                <option value="1">People 1</option>
-                                                <option value="2">People 2</option>
-                                                <option value="3">People 3</option>
-                                            </select>
-                                            <label for="select1">No Of People</label>
+                                        <input type="number" class="form-control" id="personas" placeholder="Numero de Personas"  v-model="form.personas" required >
+                                        <label for="personas">Nº Personas</label>
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-floating">
-                                            <textarea class="form-control" placeholder="Special Request" id="message" style="height: 100px"></textarea>
+                                            <textarea class="form-control" placeholder="Special Request" id="message" style="height: 100px" v-model="form.comentari"></textarea>
                                             <label for="message">Special Request</label>
                                         </div>
                                     </div>
                                     <div class="col-12">
-                                        <button class="btn btn-primary w-100 py-3" type="submit">Book Now</button>
+                                        <button class="btn btn-primary w-100 py-3" type="submit" @click="submitReserva();">Book Now</button>
                                     </div>
                                 </div>
                             </form>
@@ -639,13 +687,13 @@ Vue.component("cont", {
                             <div class="col-md-6">
                                 <div class="form-floating">
                                     <input type="text" class="form-control" id="name" placeholder="Your Name">
-                                    <label for="name">Your Name</label>
+                                    <label for="name">Nombre Completo</label>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-floating">
                                     <input type="email" class="form-control" id="email" placeholder="Your Email">
-                                    <label for="email">Your Email</label>
+                                    <label for="email">Correo Electronico</label>
                                 </div>
                             </div>
                             <div class="col-12">
@@ -677,6 +725,7 @@ const home = Vue.component("home", {
   template: `<div>
         <navbar></navbar>
         <about></about>
+        <team></team>
         <menulist></menulist>
         <testi></testi>
         <foot></foot>
@@ -810,6 +859,33 @@ const m = Vue.component("comida", {
               <a v-b-modal.p-online class="btn btn-primary py-sm-3 px-sm-5 me-3 mb-2 w-25 animated slideInRight">Pedido Online</a>
               </div>
               <foot></foot>
+
+              <b-modal id="p-online" size="xl" hide-footer title="Pedido Online">
+        <div class="row">
+            <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                <a href="https://glovoapp.com/es/es/barcelona/restaurante-milagros-barcelona/?utm_source=google&utm_medium=cpc&utm_campaign=google_performance_ES_BCN_Search_cpa_All_FirstOrder_0_NewUsers_es__DigitalBudget_NoPromo_0_12012021&utm_campaignid=1623072654&utm_adgroupid=136291609158&utm_term&utm_matchtype&utm_device=c&gclid=CjwKCAiArY2fBhB9EiwAWqHK6ungY1QK_QKEmnG0ZzhnftujcUXQBPtzipDne0cNVIN07Z8TVEFj1RoCTE8QAvD_BwE" target="_blank">
+                    <img class="img-fluid" src="img/glovo.png" alt="" style="height: "><br>
+                </a>
+                <h5 class="card-title">Glovo</h5>
+                <a href="https://glovoapp.com/es/es/barcelona/restaurante-milagros-barcelona/?utm_source=google&utm_medium=cpc&utm_campaign=google_performance_ES_BCN_Search_cpa_All_FirstOrder_0_NewUsers_es__DigitalBudget_NoPromo_0_12012021&utm_campaignid=1623072654&utm_adgroupid=136291609158&utm_term&utm_matchtype&utm_device=c&gclid=CjwKCAiArY2fBhB9EiwAWqHK6ungY1QK_QKEmnG0ZzhnftujcUXQBPtzipDne0cNVIN07Z8TVEFj1RoCTE8QAvD_BwE" class="btn btn-primary w-100" target="_blank">Pide un Glovo</a>
+                </div>
+            </div>
+            </div>
+            <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                <a href="https://www.just-eat.es/restaurants-restaurante-milagros-08902/menu" target="_blank" >
+                    <img class="img-fluid" src="img/justeat.png" alt=""><br>
+                    </a>
+                <h5 class="card-title text-align-center">Justeat</h5>
+                <a href="https://www.just-eat.es/restaurants-restaurante-milagros-08902/menu" target="_blank" class="btn btn-primary w-100">Pide un Justeat</a>
+                </div>
+            </div>
+            </div>
+        </div>
+    </b-modal>
               </div>`,
   data: function () {
     return {};
