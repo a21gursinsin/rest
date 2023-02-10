@@ -628,7 +628,7 @@ Vue.component("reservation", {
         "http://singh.alumnes.inspedralbes.cat/js/backend/reserva.php";
       await fetch(url, {
         method: "POST",
-        body: enviar,
+        body: JSON.parse(enviar),
       })
         .then((response) => response.json())
         .then((data) => console.log(data));
