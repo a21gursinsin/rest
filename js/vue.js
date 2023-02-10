@@ -615,7 +615,7 @@ Vue.component("reservation", {
     };
   },
   methods: {
-    submitReserva() {
+    async submitReserva() {
       const enviar = new FormData();
       enviar.append("nombre", this.form.nombre);
       enviar.append("mail", this.form.mail);
@@ -624,12 +624,15 @@ Vue.component("reservation", {
       enviar.append("personas", this.form.personas);
       enviar.append("comentari", this.form.comentari);
 
-      fetch("http://singh.alumnes.inspedralbes.cat/js/backend/reserva.php", {
-        method: "POST",
-        body: enviar,
-      })
+      await fetch(
+        "http://singh.alumnes.inspedralbes.cat/js/backend/reserva.php",
+        {
+          method: "POST",
+          body: enviar,
+        }
+      )
         .then((response) => response.json())
-        .then((data) => (this.result = console.log(data)));
+        .then((data) => console.log(data));
 
       if (this.data2[0] == "done") {
         Swal.fire(
