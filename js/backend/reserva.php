@@ -21,48 +21,21 @@ if (empty($nombre) || empty($mail) || empty($dia) || empty($hora) || empty($pers
 
         $result = mysqli_query($connect, $sql) or die("Error in Selecting " . mysqli_error($connect));
 
-        // multiple recipients
-        $to  = 'gur.coder@gmail.com'; // note the comma
-        // $to .= '';
+        $header = 'From: ' . $mail . " \r\n";
+        $header .= "X-Mailer: PHP/" . phpversion() . " \r\n";
+        $header .= "Mime-Version: 1.0 \r\n";
+        $header .= "Content-Type: text/plain";
 
-        // subject
-        $subject = 'Birthday Reminders for August';
+        $message = "Aquest missatge va ser enviat per: " . $nombre . " \r\n";
+        $message .= "El seu correo es: " . $mail . " \r\n";
+        $message .= "Mensaje: Reserva para al Dia " . $dia . " y a las" . $hora . " \r\n";
+        $message .= "Enviado el: " . date('d/m/Y', time());
 
-        // message
-        $message = '
-        <html>
-        <head>
-        <title>Birthday Reminders for August</title>
-        </head>
-        <body>
-        <p>Here are the birthdays upcoming in August!</p>
-        <table>
-            <tr>
-            <th>Person</th><th>Day</th><th>Month</th><th>Year</th>
-            </tr>
-            <tr>
-            <td>Joe</td><td>3rd</td><td>August</td><td>1970</td>
-            </tr>
-            <tr>
-            <td>Sally</td><td>17th</td><td>August</td><td>1973</td>
-            </tr>
-        </table>
-        </body>
-        </html>
-        ';
+        $para = 'gur.coder@gmail.com';
+        $asunto = $assumpte;
 
-        // To send HTML mail, the Content-type header must be set
-        $headers  = 'MIME-Version: 1.0' . "\r\n";
-        $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+        mail($para, $asunto, utf8_decode($message), $header);
 
-        // Additional headers
-        $headers .= 'To: Mary <mary@example.com>, Kelly <kelly@example.com>' . "\r\n";
-        $headers .= 'From: Birthday Reminder <birthday@example.com>' . "\r\n";
-        // $headers .= 'Cc: birthdayarchive@example.com' . "\r\n";
-        // $headers .= 'Bcc: birthdaycheck@example.com' . "\r\n";
-
-        // Mail it
-        mail($to, $subject, $message, $headers);
 
         while ($row = mysqli_fetch_assoc($result)) {
             $resultat[] = $row;
