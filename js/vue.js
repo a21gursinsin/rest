@@ -630,7 +630,7 @@ Vue.component("reservation", {
         method: "POST",
         body: enviar,
       })
-        .then((response) => response)
+        .then((response) => response.json())
         .then((data) => console.log(data));
 
       //   if (this.data2[0] == "done") {
