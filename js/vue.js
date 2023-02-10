@@ -536,7 +536,7 @@ Vue.component("reservation", {
                         <div class="p-5 wow fadeInUp" data-wow-delay="0.2s">
                             <h5 class="section-title ff-secondary text-start text-primary fw-normal">Reservation</h5>
                             <h1 class="text-white mb-4">Book A Table Online</h1>
-                            <form>
+                            <form action=>
                                 <div class="row g-3">
                                     <div class="col-md-6">
                                         <div class="form-floating">
@@ -630,24 +630,23 @@ Vue.component("reservation", {
           method: "POST",
           body: enviar,
         }
-      )
-        .then((response) => response.json())
-        .then((data) => console.log(data));
+      ).then((response) => response.json());
+      //     .then((data) => console.log(data));
 
-      if (this.data2[0] == "done") {
-        Swal.fire(
-          "Reserva Enviada",
-          "En continuación le llegara un correo de Reserva",
-          'Cualquier Consulta ponga en contacto con Atención al cliente <a href="tel:+34 933 60 68 24">LLamar Fijo</a><a href="tel:+34 632 33 53 56">Llamar Movil</a>'
-        );
-      } else {
-        Swal.fire({
-          icon: "error",
-          title: "Oops...",
-          text: "Something went wrong!",
-          footer: '<a href="">Why do I have this issue?</a>',
-        });
-      }
+      //   if (this.data2[0] == "done") {
+      //     Swal.fire(
+      //       "Reserva Enviada",
+      //       "En continuación le llegara un correo de Reserva",
+      //       'Cualquier Consulta ponga en contacto con Atención al cliente <a href="tel:+34 933 60 68 24">LLamar Fijo</a><a href="tel:+34 632 33 53 56">Llamar Movil</a>'
+      //     );
+      //   } else {
+      //     Swal.fire({
+      //       icon: "error",
+      //       title: "Oops...",
+      //       text: "Something went wrong!",
+      //       footer: '<a href="">Why do I have this issue?</a>',
+      //     });
+      //   }
     },
   },
 });
