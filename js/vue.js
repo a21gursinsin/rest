@@ -326,7 +326,7 @@ Vue.component("menulist", {
   },
   async mounted() {
     await fetch(
-      "http://singh.alumnes.inspedralbes.cat/js/backend/menulist.php" +
+      "http://singh.alumnes.inspedralbes.cat/js/backend/menulist.php?type=" +
         this.type,
       {
         mode: "cors",
