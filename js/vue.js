@@ -619,8 +619,8 @@ Vue.component("reservation", {
       const enviar = new FormData();
       enviar.append("nombre", this.form.nombre);
       enviar.append("mail", this.form.mail);
-      //   enviar.append("tiempo", this.form.dia);
-      //   enviar.append("tiempo", this.form.hora);
+      enviar.append("tiempo", this.form.dia);
+      enviar.append("tiempo", this.form.hora);
       enviar.append("personas", this.form.personas);
       enviar.append("comentari", this.form.comentari);
 
@@ -628,25 +628,25 @@ Vue.component("reservation", {
         "http://singh.alumnes.inspedralbes.cat/js/backend/reserva.php";
       await fetch(url, {
         method: "POST",
-        body: JSON.parse(enviar),
+        body: JSON.stringify(enviar),
       })
-        .then((response) => response.json())
+        .then((response) => response)
         .then((data) => console.log(data));
 
-      if (this.data2[0] == "done") {
-        Swal.fire(
-          "Reserva Enviada",
-          "En continuación le llegara un correo de Reserva",
-          'Cualquier Consulta ponga en contacto con Atención al cliente <a href="tel:+34 933 60 68 24">LLamar Fijo</a><a href="tel:+34 632 33 53 56">Llamar Movil</a>'
-        );
-      } else {
-        Swal.fire({
-          icon: "error",
-          title: "Oops...",
-          text: "Something went wrong!",
-          footer: '<a href="">Why do I have this issue?</a>',
-        });
-      }
+      //   if (this.data2[0] == "done") {
+      //     Swal.fire(
+      //       "Reserva Enviada",
+      //       "En continuación le llegara un correo de Reserva",
+      //       'Cualquier Consulta ponga en contacto con Atención al cliente <a href="tel:+34 933 60 68 24">LLamar Fijo</a><a href="tel:+34 632 33 53 56">Llamar Movil</a>'
+      //     );
+      //   } else {
+      //     Swal.fire({
+      //       icon: "error",
+      //       title: "Oops...",
+      //       text: "Something went wrong!",
+      //       footer: '<a href="">Why do I have this issue?</a>',
+      //     });
+      //   }
     },
   },
 });
