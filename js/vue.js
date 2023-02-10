@@ -545,10 +545,13 @@ Vue.component("reservation", {
       enviar.append("personas", this.form.personas);
       enviar.append("comentari", this.form.comentari);
 
-      await fetch("http://localhost:8080/rest/js/backend/reserva.php", {
-        method: "POST",
-        body: enviar,
-      })
+      await fetch(
+        "http://singh.alumnes.inspedralbes.cat/js/backend/reserva.php",
+        {
+          method: "POST",
+          body: enviar,
+        }
+      )
         .then((response) => response.json())
         .then((data) => (this.data2 = console.log(data)));
 
