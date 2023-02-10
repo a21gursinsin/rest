@@ -2,6 +2,8 @@
 
 $connect = include_once("./config.php");
 
+
+
 $nombre = mysqli_real_escape_string($connect, $_POST["nombre"]);
 $mail = mysqli_real_escape_string($connect, $_POST["mail"]);
 $dia = mysqli_real_escape_string($connect, $_POST["dia"]);
@@ -21,20 +23,7 @@ if (empty($nombre) || empty($mail) || empty($dia) || empty($hora) || empty($pers
 
         $result = mysqli_query($connect, $sql) or die("Error in Selecting " . mysqli_error($connect));
 
-        $header = 'From: ' . $mail . " \r\n";
-        $header .= "X-Mailer: PHP/" . phpversion() . " \r\n";
-        $header .= "Mime-Version: 1.0 \r\n";
-        $header .= "Content-Type: text/plain";
-
-        $message = "Aquest missatge va ser enviat per: " . $nombre . " \r\n";
-        $message .= "El seu correo es: " . $mail . " \r\n";
-        $message .= "Mensaje: Reserva para al Dia " . $dia . " y a las" . $hora . " \r\n";
-        $message .= "Enviado el: " . date('d/m/Y', time());
-
-        $para = 'gur.coder@gmail.com';
-        $asunto = 'RESERVA del ' . $nombre;
-
-        mail($para, $asunto, utf8_decode($message), $header);
+        enviarcorreo($nombre, $mail, $dia, $hora, $personas, $comentari);
 
 
         while ($row = mysqli_fetch_assoc($result)) {
@@ -48,3 +37,8 @@ echo json_encode($resultat);
 
 //close the db connection
 mysqli_close($connect);
+
+function enviarcorreo($nombre, $mail, $dia, $hora, $personas, $comentari)
+{
+    print('hola');
+}
