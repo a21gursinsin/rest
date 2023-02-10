@@ -632,7 +632,7 @@ Vue.component("reservation", {
         body: enviar,
       })
         .then((response) => response.json())
-        .then((data) => (this.result = console.log(data)));
+        .then((data) => (this.result = data));
 
       if (this.result[0] == "err") {
         Swal.fire({
