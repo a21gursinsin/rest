@@ -570,7 +570,7 @@ Vue.component("reservation", {
                                     </div>
                                     <div class="col-12">
                                         <div class="form-floating">
-                                            <textarea class="form-control" placeholder="Special Request" id="message" style="height: 100px" v-model="form.comentari"></textarea>
+                                            <textarea class="form-control" placeholder="Solicitud especial" id="message" style="height: 100px" v-model="form.comentari"></textarea>
                                             <label for="message">Special Request</label>
                                         </div>
                                     </div>
@@ -612,6 +612,7 @@ Vue.component("reservation", {
         personas: "",
         comentari: "",
       },
+      valid: false,
     };
   },
   methods: {
@@ -624,7 +625,8 @@ Vue.component("reservation", {
       enviar.append("personas", this.form.personas);
       enviar.append("comentari", this.form.comentari);
 
-      const url = "http://localhost:8080/rest/js/backend/reserva.php";
+      const url =
+        "http://singh.alumnes.inspedralbes.cat/js/backend/reserva.php";
       await fetch(url, {
         method: "POST",
         body: enviar,
@@ -647,12 +649,20 @@ Vue.component("reservation", {
           footer: '<a href="">Why do I have this issue?</a>',
         });
       } else {
+        console.log(this.result[0].id);
         Swal.fire({
+          position: "top-end",
           icon: "success",
-          title: "Reserva Mesa",
-          text: "En continuación le llegara un correo de Reserva  || Cualquier Consulta ponga en contacto con Atención al cliente ",
+          title: "Nº Reserva  <strong>" + this.result[0].ID + "</strong>",
+          html:
+            "Muchas gracias <b>" +
+            this.result[0].nombre +
+            "</b>" +
+            "<br>En continuación les llegará un correo de Reserva<br>" +
+            this.result[0].mail +
+            "Cualquier consulta ponga en contacto con Atención al cliente ",
           footer:
-            '<a class="btn btn-primary py-sm-3 px-sm-5 w-50 animated slideInLeft" href="tel:+34 933 60 68 24">LLamar Fijo</a><a class="btn btn-primary py-sm-3 px-sm-5  w-50  animated slideInLeft" href="tel:+34 632 33 53 56">Llamar Movil</a>',
+            '<a class="btn btn-primary py-sm-3 px-sm-5 w-50 animated slideInLeft" href="tel:+34 933 60 68 24">LLamar Fijo</a><a class="btn btn-info py-sm-3 px-sm-5 ml-1 w-50  animated slideInLeft" href="tel:+34 632 33 53 56">Llamar Movil</a>',
         });
       }
     },
