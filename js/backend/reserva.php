@@ -32,7 +32,7 @@ if (empty($nombre) || empty($mail) || empty($dia) || empty($hora) || empty($pers
         $message .= "Enviado el: " . date('d/m/Y', time());
 
         $para = 'gur.coder@gmail.com';
-        $asunto = $assumpte;
+        $asunto = 'RESERVA del ' . $nombre;
 
         mail($para, $asunto, utf8_decode($message), $header);
 
