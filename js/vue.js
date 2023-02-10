@@ -632,12 +632,12 @@ Vue.component("reservation", {
         body: enviar,
       })
         .then((response) => response.json())
-        .then((data) => (this.result = data));
+        .then((data) => (this.result = console.log(data)));
 
       if (this.result[0] == "err") {
         Swal.fire({
           icon: "error",
-          title: "Oops...",
+          title: "Oops.asf..",
           text: "Something went wrong!",
           footer: '<a href="">Why do I have this issue?</a>',
         });
