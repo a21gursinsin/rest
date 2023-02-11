@@ -661,7 +661,7 @@ Vue.component("reservation", {
           footer:
             '<a class="btn btn-primary py-sm-3 px-sm-5 w-50 animated slideInLeft" href="tel:+34 933 60 68 24">LLamar Fijo</a><a class="btn btn-info py-sm-3 px-sm-5 ml-1 w-50  animated slideInLeft" href="tel:+34 632 33 53 56">Llamar Movil</a>',
         });
-        location.reload(); /*Revisar recargar correo*/
+        //location.reload(); /*Revisar recargar correo*/
       }
     },
   },

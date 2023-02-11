@@ -63,7 +63,45 @@ if ($resultat != 'err' and $resultat != 'err2') {
     $to = "gur.coder@gmail.com";
     $subject = "Reserva de" . $nombre;
 
-    $message = "<b>This is HTML message.</b>";
+    $message = "<html>
+
+    <head>
+    
+    <title>Office supplies for March</title>
+    
+    </head>
+    
+    <body>
+    
+    <p>We need the following office supplies</p>
+    
+    <table>
+    
+    <tr>
+    
+    <th>Item</th><th>Quantity</th><th>Month</th><th>Department</th>
+    
+    </tr>
+    
+    <tr>
+    
+    <td>Notebook</td><td>10</td><td>March</td><td>Operations</td>
+    
+    </tr>
+    
+    <tr>
+    
+    <td>Chair</td><td>5</td><td>March</td><td>Marketing</td>
+    
+    </tr>
+    
+    </table>
+    
+    </body>
+    
+    </html>
+    
+    ';";
     $message .= "<h1>This is headline.</h1>";
 
     $header = "From:" . $mail . "\r\n";
