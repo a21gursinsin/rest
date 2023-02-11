@@ -390,10 +390,10 @@ Vue.component("menulist", {
                             </ul>
                             <div class="tab-content">
                                 <div id="tab-1" class="tab-pane fade show p-0 active" v-for="i in list.length" >
-                                    <div class="text-center wow fadeInUp" data-wow-delay="0.1s"  v-if=" {{ list[i-1].Categoria }} != {{ list[i].Categoria }}">
-                                        <h5 class="section-title ff-secondary text-center text-primary fw-normal">Food Menu</h5>
-                                        <h1 class="mb-5">Most Popular Items</h1>
-                                    </div>
+                                <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                                    <h5 class="section-title ff-secondary text-center text-primary fw-normal">Food Menu</h5>
+                                    <h1 class="mb-5">Most Pholas</h1>
+                                </div>
                                     <div class="row g-4"  v-if="(i%2) == '1'" >
                                         <div class="col-lg-6" >
                                             <div class="d-flex align-items-center">
