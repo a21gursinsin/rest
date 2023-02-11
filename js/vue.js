@@ -663,13 +663,76 @@ Vue.component("reservation", {
           footer:
             '<a class="btn btn-primary py-sm-3 px-sm-5 w-50 animated slideInLeft" href="tel:+34 933 60 68 24">LLamar Fijo</a><a class="btn btn-info py-sm-3 px-sm-5 ml-1 w-50  animated slideInLeft" href="tel:+34 632 33 53 56">Llamar Movil</a>',
         });
-        location.reload();
+        location.reload(); /*Revisar recargar correo*/
       }
     },
   },
 });
 
 Vue.component("cont", {
+  data: function () {
+    return {
+      result: null,
+      form: {
+        nombre: "",
+        mail: "",
+        asunto: "",
+        tel: "",
+        comentari: "",
+      },
+      valid: false,
+    };
+  },
+  methods: {
+    async submitReserva() {
+      const enviar = new FormData();
+      enviar.append("nombre", this.form.nombre);
+      enviar.append("mail", this.form.mail);
+      enviar.append("asunto", this.form.asunto);
+      enviar.append("tel", this.form.tel);
+      enviar.append("comentari", this.form.comentari);
+
+      const url =
+        "http://singh.alumnes.inspedralbes.cat/js/backend/contacto.php";
+      await fetch(url, {
+        method: "POST",
+        body: enviar,
+      })
+        .then((response) => response.json())
+        .then((data) => (this.result = data));
+
+      if (this.result[0] == "err") {
+        Swal.fire({
+          icon: "error",
+          title: "Oops.asf..",
+          text: "Something went wrong!",
+          footer: '<a href="">Why do I have this issue?</a>',
+        });
+      } else if (this.result[0] == "err2") {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Something went wrong!",
+          footer: '<a href="">Why do I have this issue?</a>',
+        });
+      } else {
+        Swal.fire({
+          icon: "success",
+          title: "Nº Petición  <strong>" + this.result[0].ID + "</strong>",
+          html:
+            "Gracias por contactar con nosotros <b>" +
+            this.result[0].nombre +
+            "</b>" +
+            "<br>En brave nos podremos en contacto via telefónica<br> " +
+            this.result[0].tel +
+            "<smail>Sin embargo, pueden ponerse en contacto nosotros para resolver su petición</smail>",
+          footer:
+            '<a class="btn btn-primary py-sm-3 px-sm-5 w-50 animated slideInLeft" href="tel:+34 933 60 68 24">LLamar Fijo</a><a class="btn btn-info py-sm-3 px-sm-5 ml-1 w-50  animated slideInLeft" href="tel:+34 632 33 53 56">Llamar Movil</a>',
+        });
+        location.reload(); /*Revisar recargar correo*/
+      }
+    },
+  },
   template: `<div>
     <div class="py-5">
     <div class="container">
@@ -734,6 +797,7 @@ Vue.component("cont", {
                         </div>
                     </form>
                 </div>
+                <a class="btn btn-primary py-sm-3 px-sm-5 w-50 mt-2 animated slideInUp" href="tel:+34 933 60 68 24">LLamar Fijo</a><a class="btn btn-outline-info py-sm-3 px-sm-5 mt-2 w-50  animated slideInUp border border-secondary rounded" href="tel:+34 632 33 53 56">Llamar Movil</a>
             </div>
         </div>
     </div>
