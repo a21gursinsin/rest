@@ -390,6 +390,10 @@ Vue.component("menulist", {
                             </ul>
                             <div class="tab-content">
                                 <div id="tab-1" class="tab-pane fade show p-0 active" v-for="i in list.length" >
+                                    <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                                        <h5 class="section-title ff-secondary text-center text-primary fw-normal">Food Menu</h5>
+                                        <h1 class="mb-5">Most Popular Items</h1>
+                                    </div>
                                     <div class="row g-4"  v-if="(i%2) == '1'" >
                                         <div class="col-lg-6" >
                                             <div class="d-flex align-items-center">
@@ -797,7 +801,7 @@ Vue.component("cont", {
                         </div>
                     </form>
                 </div>
-                <a class="btn btn-primary py-sm-3 px-sm-5 w-50 mt-2 animated slideInUp" href="tel:+34 933 60 68 24">LLamar Fijo</a><a class="btn btn-outline-info py-sm-3 px-sm-5 mt-2 w-50  animated slideInUp border border-secondary rounded" href="tel:+34 632 33 53 56">Llamar Movil</a>
+                <a class="btn btn-outline-primary py-sm-3 px-sm-5 w-50 mt-2 animated slideInUp" href="tel:+34 933 60 68 24">LLamar Fijo</a><a class="btn btn-outline-primary py-sm-3 px-sm-5 mt-2 w-50  animated slideInUp border border-secondary rounded" href="tel:+34 632 33 53 56">Llamar Movil</a>
             </div>
         </div>
     </div>
