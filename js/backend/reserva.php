@@ -52,48 +52,60 @@ if (empty($nombre) || empty($mail) || empty($dia) || empty($hora) || empty($pers
         while ($row = mysqli_fetch_assoc($result)) {
             $resultat[] = $row;
         }
+        $to = "gur.coder@gmail.com";
+        $subject = "Reserva de " . $nombre;
+
+        $message = "<b>This is HTML message.</b>";
+        $message .= "<h1>Reserva" . $resultat->id . "</h1>";
+
+        $header = "From:" . $mail . "\r\n";
+        $header .= "Cc: \r\n";
+        $header .= "MIME-Version: 1.0\r\n";
+        $header .= "Content-type: text/html\r\n";
+
+        $retval = mail($to, $subject, $message, $header);
     } else {
         $resultat[] = 'err2';
     }
 }
 
-if ($resultat != 'err' and $resultat != 'err2') {
+// if ($resultat != 'err' and $resultat != 'err2') {
 
-    //Para Restaurante
-    $to = "gur.coder@gmail.com";
-    $subject = "Reserva de " . $nombre;
+//     //Para Restaurante
+//     $to = "gur.coder@gmail.com";
+//     $subject = "Reserva de " . $nombre;
 
-    $message = "<b>This is HTML message.</b>";
-    $message .= "<h1>Reserva" . $row[0]->id . "</h1>";
+//     $message = "<b>This is HTML message.</b>";
+//     $message .= "<h1>Reserva" . $row[0]->id . "</h1>";
 
-    $header = "From:" . $mail . "\r\n";
-    $header .= "Cc:afgh@somedomain.com \r\n";
-    $header .= "MIME-Version: 1.0\r\n";
-    $header .= "Content-type: text/html\r\n";
+//     $header = "From:" . $mail . "\r\n";
+//     $header .= "Cc:afgh@somedomain.com \r\n";
+//     $header .= "MIME-Version: 1.0\r\n";
+//     $header .= "Content-type: text/html\r\n";
 
-    $retval = mail($to, $subject, $message, $header);
+//     $retval = mail($to, $subject, $message, $header);
 
 
-    // //Para Cliente
-    // $to = "gur.coder@gmail.com";
-    // $subject = "Reserva de" . $nombre;
+// //Para Cliente
+// $to = "gur.coder@gmail.com";
+// $subject = "Reserva de" . $nombre;
 
-    // $message = "<b>This is HTML message.</b>";
-    // $message .= "<h1>This is headline.</h1>";
+// $message = "<b>This is HTML message.</b>";
+// $message .= "<h1>This is headline.</h1>";
 
-    // $header = "From:" . $mail . "\r\n";
-    // $header .= "Cc:afgh@somedomain.com \r\n";
-    // $header .= "MIME-Version: 1.0\r\n";
-    // $header .= "Content-type: text/html\r\n";
+// $header = "From:" . $mail . "\r\n";
+// $header .= "Cc:afgh@somedomain.com \r\n";
+// $header .= "MIME-Version: 1.0\r\n";
+// $header .= "Content-type: text/html\r\n";
 
-    // $retval = mail($to, $subject, $message, $header);
+// $retval = mail($to, $subject, $message, $header);
 
-    // if ($retval == true) {
-    //     echo "Message sent successfully...";
-    // } else {
-    //     echo "Message could not be sent...";
-    // }
-}
+// if ($retval == true) {
+//     echo "Message sent successfully...";
+// } else {
+//     echo "Message could not be sent...";
+// }
+// }
 
 
 
