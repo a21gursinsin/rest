@@ -573,7 +573,7 @@ Vue.component("reservation", {
                                         </div>
                                     </div>
                                     <div class="col-12">
-                                        <button class="btn btn-primary w-100 py-3" type="submit" @click="submitReserva();">Book Now</button>
+                                        <button class="btn btn-primary w-100 py-3" @click="submitReserva();">Book Now</button>
                                     </div>
                                 </div>
                             </form>
