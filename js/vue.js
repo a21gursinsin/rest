@@ -388,9 +388,6 @@ Vue.component("menulist", {
                             </ul>
                             <div class="tab-content">
                                 <div id="tab-1" class="tab-pane fade show p-0 active" v-for="i in list.length" >
-                                    <div class="text-center wow fadeInUp" data-wow-delay="0.1s" >
-                                        <h1 class="mb-5" v-if=" list[i-1].Categoria === list[i].Categoria  ">{{ list[i-1].Categoria }}</h1>
-                                    </div>
                                     <div class="row g-4"  v-if="(i%2) == '1'" >
                                         <div class="col-lg-6" >
                                             <div class="d-flex align-items-center">
@@ -770,26 +767,32 @@ Vue.component("cont", {
                         <div class="row g-3">
                             <div class="col-md-6">
                                 <div class="form-floating">
-                                    <input type="text" class="form-control" id="name" placeholder="Your Name">
+                                    <input type="text" class="form-control" id="name" placeholder="Your Name" v-model="form.nombre">
                                     <label for="name">Nombre Completo</label>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-floating">
-                                    <input type="email" class="form-control" id="email" placeholder="Your Email">
+                                    <input type="email" class="form-control" id="email" placeholder="Correo Electronico" v-model="form.mail">
                                     <label for="email">Correo Electronico</label>
                                 </div>
                             </div>
-                            <div class="col-12">
+                            <div class="col-6">
                                 <div class="form-floating">
-                                    <input type="text" class="form-control" id="subject" placeholder="Subject">
-                                    <label for="subject">Subject</label>
+                                    <input type="text" class="form-control" id="asunto" placeholder="asunto" v-model="form.asunto">
+                                    <label for="asunto">Asunto</label>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-floating">
+                                    <input type="number" class="form-control" id="tel" placeholder="Telfono" v-model="form.tel">
+                                    <label for="tel">Telfono</label>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-floating">
-                                    <textarea class="form-control" placeholder="Leave a message here" id="message" style="height: 150px"></textarea>
-                                    <label for="message">Message</label>
+                                    <textarea class="form-control" placeholder="Leave a message here" id="message" style="height: 150px" v-model="form.comentari"></textarea>
+                                    <label for="message">Mensaje</label>
                                 </div>
                             </div>
                             <div class="col-12">
