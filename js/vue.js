@@ -467,7 +467,7 @@ Vue.component("testi", {
     )
       .then((response) => response.json())
       .then((data) => (this.list = data));
-    console.log(this.list[0].nombre);
+    console.log(this.list);
   },
 
   template: `<div>
