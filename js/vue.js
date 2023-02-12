@@ -431,43 +431,43 @@ Vue.component("testi", {
     };
   },
   async mounted() {
-    // (function ($) {
-    //   "use strict";
-    //   // Testimonials carousel
-    //   $(".testimonial-carousel").owlCarousel({
-    //     autoplay: true,
-    //     smartSpeed: 1000,
-    //     center: true,
-    //     margin: 24,
-    //     dots: true,
-    //     loop: true,
-    //     nav: false,
-    //     responsive: {
-    //       0: {
-    //         items: 1,
-    //       },
-    //       768: {
-    //         items: 2,
-    //       },
-    //       992: {
-    //         items: 3,
-    //       },
-    //     },
-    //   });
-    // })(jQuery);
-
-    await fetch(
-      "http://singh.alumnes.inspedralbes.cat/js/backend/getComentaris.php",
-      {
-        mode: "cors",
-        headers: {
-          "Access-Control-Allow-Origin": "*",
+    (function ($) {
+      "use strict";
+      // Testimonials carousel
+      $(".testimonial-carousel").owlCarousel({
+        autoplay: true,
+        smartSpeed: 1000,
+        center: true,
+        margin: 24,
+        dots: true,
+        loop: true,
+        nav: false,
+        responsive: {
+          0: {
+            items: 1,
+          },
+          768: {
+            items: 2,
+          },
+          992: {
+            items: 3,
+          },
         },
-      }
-    )
-      .then((response) => response.json())
-      .then((data) => (this.list = data));
-    console.log(this.list);
+      });
+    })(jQuery);
+
+    // await fetch(
+    //   "http://singh.alumnes.inspedralbes.cat/js/backend/getComentaris.php",
+    //   {
+    //     mode: "cors",
+    //     headers: {
+    //       "Access-Control-Allow-Origin": "*",
+    //     },
+    //   }
+    // )
+    //   .then((response) => response.json())
+    //   .then((data) => (this.list = data));
+    // console.log(this.list);
   },
 
   template: `<div>
