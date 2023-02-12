@@ -466,7 +466,7 @@ Vue.component("testi", {
       }
     )
       .then((response) => response.json())
-      .then((data) => (this.list = data));
+      .then((data) => (this.list = json.decode(data)));
     console.log(this.list);
   },
 
