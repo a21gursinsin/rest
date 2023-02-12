@@ -477,43 +477,14 @@ Vue.component("testi", {
                         <h5 class="section-title ff-secondary text-center text-primary fw-normal">Testimonial</h5>
                         <h1 class="mb-5">Lo que opinan de Nosotros!!!</h1>
                     </div>
-                    <div class="owl-carousel testimonial-carousel">
+                    <div class="owl-carousel testimonial-carousel" v-for="i in list.length">
                         <div class="testimonial-item bg-transparent border rounded p-4">
                             <i class="fa fa-quote-left fa-2x text-primary mb-3"></i>
-                            <p>Hoy hemos ido a comer toda la familia confiando en las reseñas de otros clientes, y estamos más que satisfechos con la experiencia: la comida estaba deliciosa, muy especialmente el arroz con bogavante, el servicio ha sido correcto (muy amables, aunque han tardado un poco en tomarnos nota), y el precio excelente dada la calidad y cantidad. En resumen, un lugar muy recomendable al que volveremos con total seguridad.</p>
+                            <p>{{ list[i-1].comentari }}</p>
                             <div class="d-flex align-items-center">
                                 <div class="ps-3">
-                                    <h5 class="mb-1">Alex Gregorio</h5>
-                                    <small>Google</small>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="testimonial-item bg-transparent border rounded p-4">
-                            <i class="fa fa-quote-left fa-2x text-primary mb-3"></i>
-                            <p>Servicio era excelente! Nunca hemos experimentado atencion tan amable en Barcelona. Pedimos tacos (de carne y de pollo), nachos con guacamole y chocos, todo perfecto y buenissimo. 100% recomendado!"</p> <div class="d-flex align-items-center">
-                                <div class="ps-3">
-                                    <h5 class="mb-1">Siina Nurminen</h5>
-                                    <small>Google</small>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="testimonial-item bg-transparent border rounded p-4">
-                            <i class="fa fa-quote-left fa-2x text-primary mb-3"></i>
-                            <p>Excelente comida, todo muy rico y de buenas porciones. Pedimos Calamares, berenjenas, croquetas y anchoas y todo estuvo delicioso. La atención también es excelente. Definitivamente recomendable, regresaría con mucho gusto.</p>
-                            <div class="d-flex align-items-center">
-                                 <div class="ps-3">
-                                    <h5 class="mb-1">Tania Becerra Schulz</h5>
-                                    <small>Google</small>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="testimonial-item bg-transparent border rounded p-4">
-                            <i class="fa fa-quote-left fa-2x text-primary mb-3"></i>
-                            <p>Hemos venido a ser un menú espectacular la camarera un trato espectacular los camareros un chico muy atento nos ha servido todo correctamente y nos han invitado hasta los chupitos un lugar impecable lindo y relax recomendable 100%"</p>
-                            <div class="d-flex align-items-center">
-                                <div class="ps-3">
-                                    <h5 class="mb-1">Andres Ortega</h5>
-                                    <small>Google</small>
+                                    <h5 class="mb-1">{{ list[i-1].nombre }}</h5>
+                                    <small>{{ list[i-1].desde }}</small>
                                 </div>
                             </div>
                         </div>
