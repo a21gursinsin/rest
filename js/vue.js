@@ -456,18 +456,18 @@ Vue.component("testi", {
       });
     })(jQuery);
 
-    await fetch(
-      "http://singh.alumnes.inspedralbes.cat/js/backend/getComentaris.php",
-      {
-        mode: "cors",
-        headers: {
-          "Access-Control-Allow-Origin": "*",
-        },
-      }
-    )
-      .then((response) => response.json())
-      .then((data) => (this.list = json.decode(data)));
-    console.log(this.list);
+    // await fetch(
+    //   "http://singh.alumnes.inspedralbes.cat/js/backend/getComentaris.php",
+    //   {
+    //     mode: "cors",
+    //     headers: {
+    //       "Access-Control-Allow-Origin": "*",
+    //     },
+    //   }
+    // )
+    //   .then((response) => response.json())
+    //   .then((data) => (this.list = data));
+    // console.log(this.list);
   },
 
   template: `<div>
@@ -475,55 +475,50 @@ Vue.component("testi", {
                 <div class="container">
                     <div class="text-center">
                         <h5 class="section-title ff-secondary text-center text-primary fw-normal">Testimonial</h5>
-                        <h1 class="mb-5">Our Clients Say!!!</h1>
+                        <h1 class="mb-5">Lo que opinan de Nosotros!!!</h1>
                     </div>
                     <div class="owl-carousel testimonial-carousel">
                         <div class="testimonial-item bg-transparent border rounded p-4">
                             <i class="fa fa-quote-left fa-2x text-primary mb-3"></i>
-                            <p>Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam</p>
+                            <p>Hoy hemos ido a comer toda la familia confiando en las reseñas de otros clientes, y estamos más que satisfechos con la experiencia: la comida estaba deliciosa, muy especialmente el arroz con bogavante, el servicio ha sido correcto (muy amables, aunque han tardado un poco en tomarnos nota), y el precio excelente dada la calidad y cantidad. En resumen, un lugar muy recomendable al que volveremos con total seguridad.</p>
                             <div class="d-flex align-items-center">
-                                <img class="img-fluid flex-shrink-0 rounded-circle" src="img/testimonial-1.jpg" style="width: 50px; height: 50px;">
                                 <div class="ps-3">
-                                    <h5 class="mb-1">Client Name</h5>
-                                    <small>Click para ver más</small>
+                                    <h5 class="mb-1">Alex Gregorio</h5>
+                                    <small>Google</small>
                                 </div>
                             </div>
                         </div>
                         <div class="testimonial-item bg-transparent border rounded p-4">
                             <i class="fa fa-quote-left fa-2x text-primary mb-3"></i>
-                            <p>Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam</p>
-                            <div class="d-flex align-items-center">
-                                <img class="img-fluid flex-shrink-0 rounded-circle" src="img/testimonial-2.jpg" style="width: 50px; height: 50px;">
+                            <p>Servicio era excelente! Nunca hemos experimentado atencion tan amable en Barcelona. Pedimos tacos (de carne y de pollo), nachos con guacamole y chocos, todo perfecto y buenissimo. 100% recomendado!"</p> <div class="d-flex align-items-center">
                                 <div class="ps-3">
-                                    <h5 class="mb-1">Client Name</h5>
-                                    <small>Profession</small>
+                                    <h5 class="mb-1">Siina Nurminen</h5>
+                                    <small>Google</small>
                                 </div>
                             </div>
                         </div>
                         <div class="testimonial-item bg-transparent border rounded p-4">
                             <i class="fa fa-quote-left fa-2x text-primary mb-3"></i>
-                            <p>Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam</p>
+                            <p>Excelente comida, todo muy rico y de buenas porciones. Pedimos Calamares, berenjenas, croquetas y anchoas y todo estuvo delicioso. La atención también es excelente. Definitivamente recomendable, regresaría con mucho gusto.</p>
                             <div class="d-flex align-items-center">
-                                <img class="img-fluid flex-shrink-0 rounded-circle" src="img/testimonial-3.jpg" style="width: 50px; height: 50px;">
-                                <div class="ps-3">
-                                    <h5 class="mb-1">Client Name</h5>
-                                    <small>Profession</small>
+                                 <div class="ps-3">
+                                    <h5 class="mb-1">Tania Becerra Schulz</h5>
+                                    <small>Google</small>
                                 </div>
                             </div>
                         </div>
                         <div class="testimonial-item bg-transparent border rounded p-4">
                             <i class="fa fa-quote-left fa-2x text-primary mb-3"></i>
-                            <p>Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam</p>
+                            <p>Hemos venido a ser un menú espectacular la camarera un trato espectacular los camareros un chico muy atento nos ha servido todo correctamente y nos han invitado hasta los chupitos un lugar impecable lindo y relax recomendable 100%"</p>
                             <div class="d-flex align-items-center">
-                                <img class="img-fluid flex-shrink-0 rounded-circle" src="img/testimonial-4.jpg" style="width: 50px; height: 50px;">
                                 <div class="ps-3">
-                                    <h5 class="mb-1">Client Name</h5>
-                                    <small>Profession</small>
+                                    <h5 class="mb-1">Andres Ortega</h5>
+                                    <small>Google</small>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <a href="https://g.page/r/CSxgNcxUn-qrEBM/review" class="btn btn-primary py-sm-3 px-sm-5 me-3 w-100 mt-5 animated slideInLeft">Dejanos un Comentario</a>
+                    <a href="https://g.page/r/CSxgNcxUn-qrEBM/review" target="_blank" class="btn btn-primary py-sm-3 px-sm-5 me-3 w-100 mt-5 animated slideInLeft">Dejanos un Comentario</a>
                 </div>
                 
             </div>

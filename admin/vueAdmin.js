@@ -691,7 +691,7 @@ const home = Vue.component("home", {
         username: "",
         password: "",
       },
-      logon: true,
+      logon: false,
     };
   },
   methods: {
