@@ -456,18 +456,18 @@ Vue.component("testi", {
       });
     })(jQuery);
 
-    // await fetch(
-    //   "http://singh.alumnes.inspedralbes.cat/js/backend/getComentaris.php",
-    //   {
-    //     mode: "cors",
-    //     headers: {
-    //       "Access-Control-Allow-Origin": "*",
-    //     },
-    //   }
-    // )
-    //   .then((response) => response.json())
-    //   .then((data) => (this.list = data));
-    // console.log(this.list);
+    await fetch(
+      "http://singh.alumnes.inspedralbes.cat/js/backend/getComentaris.php",
+      {
+        mode: "cors",
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+        },
+      }
+    )
+      .then((response) => response.json())
+      .then((data) => (this.list = data));
+    console.log(this.list);
   },
 
   template: `<div>
@@ -689,52 +689,60 @@ Vue.component("cont", {
   },
   methods: {
     async submitReserva() {
-      const enviar = new FormData();
-      enviar.append("nombre", this.form.nombre);
-      enviar.append("mail", this.form.mail);
-      enviar.append("asunto", this.form.asunto);
-      enviar.append("tel", this.form.tel);
-      enviar.append("comentari", this.form.comentari);
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Problemas Tecnicos, pongan en contacto via telefónica.",
+        footer:
+          '<a class="btn btn-primary py-sm-3 px-sm-5 w-50 animated slideInLeft" href="tel:+34 933 60 68 24">LLamar Fijo</a><a class="btn btn-info py-sm-3 px-sm-5 ml-1 w-50  animated slideInLeft" href="tel:+34 632 33 53 56">Llamar Movil</a>',
+      });
+      //   const enviar = new FormData();
+      //   enviar.append("nombre", this.form.nombre);
+      //   enviar.append("mail", this.form.mail);
+      //   enviar.append("asunto", this.form.asunto);
+      //   enviar.append("tel", this.form.tel);
+      //   enviar.append("comentari", this.form.comentari);
 
-      const url =
-        "http://singh.alumnes.inspedralbes.cat/js/backend/contacto.php";
-      await fetch(url, {
-        method: "POST",
-        body: enviar,
-      })
-        .then((response) => response.json())
-        .then((data) => (this.result = data));
+      //   const url =
+      //     "http://singh.alumnes.inspedralbes.cat/js/backend/contacto.php";
+      //   await fetch(url, {
+      //     method: "POST",
+      //     body: enviar,
+      //   })
+      //     .then((response) => response.json())
+      //     .then((data) => (this.result = data));
 
-      if (this.result[0] == "err") {
-        Swal.fire({
-          icon: "error",
-          title: "Oops.asf..",
-          text: "Something went wrong!",
-          footer: '<a href="">Why do I have this issue?</a>',
-        });
-      } else if (this.result[0] == "err2") {
-        Swal.fire({
-          icon: "error",
-          title: "Oops...",
-          text: "Something went wrong!",
-          footer: '<a href="">Why do I have this issue?</a>',
-        });
-      } else {
-        Swal.fire({
-          icon: "success",
-          title: "Nº Petición  <strong>" + this.result[0].ID + "</strong>",
-          html:
-            "Gracias por contactar con nosotros <b>" +
-            this.result[0].nombre +
-            "</b>" +
-            "<br>En brave nos podremos en contacto via telefónica<br> " +
-            this.result[0].tel +
-            "<smail>Sin embargo, pueden ponerse en contacto nosotros para resolver su petición</smail>",
-          footer:
-            '<a class="btn btn-primary py-sm-3 px-sm-5 w-50 animated slideInLeft" href="tel:+34 933 60 68 24">LLamar Fijo</a><a class="btn btn-info py-sm-3 px-sm-5 ml-1 w-50  animated slideInLeft" href="tel:+34 632 33 53 56">Llamar Movil</a>',
-        });
-        location.reload(); /*Revisar recargar correo*/
-      }
+      //   if (this.result[0] == "err") {
+      //     Swal.fire({
+      //       icon: "error",
+      //       title: "Oops.asf..",
+      //       text: "Something went wrong!",
+      //       footer: '<a href="">Why do I have this issue?</a>',
+      //     });
+      //   } else if (this.result[0] == "err2") {
+      //     Swal.fire({
+      //       icon: "error",
+      //       title: "Oops...",
+      //       text: "Problemas Tecnicos, pongan en contacto via telefónica.",
+      //       footer:
+      //         '<a class="btn btn-primary py-sm-3 px-sm-5 w-50 animated slideInLeft" href="tel:+34 933 60 68 24">LLamar Fijo</a><a class="btn btn-info py-sm-3 px-sm-5 ml-1 w-50  animated slideInLeft" href="tel:+34 632 33 53 56">Llamar Movil</a>',
+      //     });
+      //   } else {
+      //     Swal.fire({
+      //       icon: "success",
+      //       title: "Nº Petición  <strong>" + this.result[0].ID + "</strong>",
+      //       html:
+      //         "Gracias por contactar con nosotros <b>" +
+      //         this.result[0].nombre +
+      //         "</b>" +
+      //         "<br>En brave nos podremos en contacto via telefónica<br> " +
+      //         this.result[0].tel +
+      //         "<smail>Sin embargo, pueden ponerse en contacto nosotros para resolver su petición</smail>",
+      //       footer:
+      //         '<a class="btn btn-primary py-sm-3 px-sm-5 w-50 animated slideInLeft" href="tel:+34 933 60 68 24">LLamar Fijo</a><a class="btn btn-info py-sm-3 px-sm-5 ml-1 w-50  animated slideInLeft" href="tel:+34 632 33 53 56">Llamar Movil</a>',
+      //     });
+      //     location.reload(); /*Revisar recargar correo*/
+      //   }
     },
   },
   template: `<div>
@@ -773,7 +781,7 @@ Vue.component("cont", {
                         <div class="row g-3">
                             <div class="col-md-6">
                                 <div class="form-floating">
-                                    <input type="text" class="form-control" id="name" placeholder="Your Name" v-model="form.nombre">
+                                    <input type="text" class="form-control" id="name" placeholder="Your Name" v-model="form.nombre" disabled>
                                     <label for="name">Nombre Completo</label>
                                 </div>
                             </div>
@@ -802,7 +810,7 @@ Vue.component("cont", {
                                 </div>
                             </div>
                             <div class="col-12">
-                                <button class="btn btn-primary w-100 py-3" type="submit">Send Message</button>
+                                <button class="btn btn-primary w-100 py-3" type="submit" @click="submitReserva();" >Send Message</button>
                             </div>
                         </div>
                     </form>
