@@ -391,7 +391,7 @@ Vue.component("menulist", {
                                     <div class="row g-4"  v-if="(i%2) == '1'" >
                                         <div class="col-lg-6" >
                                             <div class="d-flex align-items-center">
-                                                <img class="flex-shrink-0 img-fluid rounded-circle" :src="'./img/foot/' + list[i-1].img + '.jpeg'" alt="" style="width: 80px;">
+                                                <img class="flex-shrink-0 img-fluid rounded-circle" :src="'./img/food/' + list[i-1].img + '.jpeg'" alt="" style="width: 80px;">
                                                 <div class="w-100 d-flex flex-column text-start ps-4">
                                                     <h5 class="d-flex justify-content-between border-bottom pb-2">
                                                         <span>{{ list[i-1].nombre }}</span>
@@ -403,7 +403,7 @@ Vue.component("menulist", {
                                         </div>
                                         <div class="col-lg-6" v-if="(i+1) <= list.length">
                                             <div class="d-flex align-items-center">
-                                                <img class="flex-shrink-0 img-fluid rounded-circle" :src="'./img/foot/' + list[i].img + '.jpeg'" alt="" style="width: 80px;">
+                                                <img class="flex-shrink-0 img-fluid rounded-circle" :src="'./img/food/' + list[i].img + '.jpeg'" alt="" style="width: 80px;">
                                                 <div class="w-100 d-flex flex-column text-start ps-4">
                                                     <h5 class="d-flex justify-content-between border-bottom pb-2">
                                                         <span>{{ list[i].nombre }} </span>
