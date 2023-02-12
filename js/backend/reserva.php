@@ -56,7 +56,7 @@ if (empty($nombre) || empty($mail) || empty($dia) || empty($hora) || empty($pers
         $subject = "Reserva de " . $nombre;
 
         $message = "<b>This is HTML message.</b>";
-        $message .= "<h1>Reserva" . $resultat->id . "</h1>";
+        $message .= "<h1>Reserva" . "</h1>";
 
         $header = "From:" . $mail . "\r\n";
         $header .= "Cc: \r\n";

@@ -30,7 +30,7 @@ Vue.component("navbar", {
                         <h1 class="display-3 text-white animated slideInLeft">Bienvenidos</h1>
                         <p class="text-white animated slideInLeft mb-4 pb-2">En milagros disfrutad todos los días de la semana de la oferta de ocio. Comidas y cenas, vermuts, cervezas, copas y juerga. </p>
                         <a v-b-modal.p-online class="btn btn-primary py-sm-3 px-sm-5 me-3 mb-2 w-50 animated slideInRight">Pedido Online</a> 
-                        <a href="" class="btn btn-light py-sm-3 px-sm-5 me-3 mb-2 w-50 animated slideInLeft">Reservar Mesa</a>
+                        <router-link to="/booking"><a href="" class="btn btn-light py-sm-3 px-sm-5 me-3 mb-2 w-50 animated slideInLeft">Reservar Tu Mesa</a></router-link>
                         <a href="" class="btn btn-primary py-sm-3 px-sm-5 me-3 mb-2 w-50 animated slideInRight">Menu del dia</a> 
                     </div>
                     <div class="col-lg-6 text-center text-lg-end overflow-hidden">
@@ -202,12 +202,12 @@ Vue.component("team", {
                                   <div class="rounded-circle overflow-hidden m-4">
                                       <img class="img-fluid" src="img/team-1.jpeg" alt="">
                                   </div>
-                                  <h5 class="mb-0">Full Name</h5>
-                                  <small>Designation</small>
+                                  <h5 class="mb-0">Sewak</h5>
+                                  <small>Cocinero</small>
                                   <div class="d-flex justify-content-center mt-3">
-                                      <a class="btn btn-square btn-primary mx-1" href="https://facebook.com/freewebsitecode"><i class="fab fa-facebook-f"></i></a>
-                                      <a class="btn btn-square btn-primary mx-1" href="https://freewebsitecode.com/"><i class="fab fa-twitter"></i></a>
-                                      <a class="btn btn-square btn-primary mx-1" href="https://youtube.com/freewebsitecode"><i class="fab fa-youtube"></i></a>
+                                      <a class="btn btn-square btn-primary mx-1" href="https://facebook.com/"><i class="fab fa-facebook-f"></i></a>
+                                      <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-twitter"></i></a>
+                                      <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-youtube"></i></a>
                                   </div>
                               </div>
                           </div>
@@ -216,12 +216,12 @@ Vue.component("team", {
                                   <div class="rounded-circle overflow-hidden m-4">
                                       <img class="img-fluid" src="img/team-2.jpeg" alt="">
                                   </div>
-                                  <h5 class="mb-0">Full Name</h5>
-                                  <small>Designation</small>
+                                  <h5 class="mb-0">Vicky</h5>
+                                  <small>Cocinero</small>
                                   <div class="d-flex justify-content-center mt-3">
-                                      <a class="btn btn-square btn-primary mx-1" href="https://facebook.com/freewebsitecode"><i class="fab fa-facebook-f"></i></a>
-                                      <a class="btn btn-square btn-primary mx-1" href="https://freewebsitecode.com/"><i class="fab fa-twitter"></i></a>
-                                      <a class="btn btn-square btn-primary mx-1" href="https://youtube.com/freewebsitecode"><i class="fab fa-youtube"></i></a>
+                                      <a class="btn btn-square btn-primary mx-1" href=" "><i class="fab fa-facebook-f"></i></a>
+                                      <a class="btn btn-square btn-primary mx-1" href=" "><i class="fab fa-twitter"></i></a>
+                                      <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-youtube"></i></a>
                                   </div>
                               </div>
                           </div>
@@ -230,12 +230,12 @@ Vue.component("team", {
                                   <div class="rounded-circle overflow-hidden m-4">
                                       <img class="img-fluid" src="img/team-3.jpeg" alt="">
                                   </div>
-                                  <h5 class="mb-0">Full Name</h5>
-                                  <small>Designation</small>
+                                  <h5 class="mb-0">Manjinder</h5>
+                                  <small>Camarero</small>
                                   <div class="d-flex justify-content-center mt-3">
-                                      <a class="btn btn-square btn-primary mx-1" href="https://facebook.com/freewebsitecode"><i class="fab fa-facebook-f"></i></a>
-                                      <a class="btn btn-square btn-primary mx-1" href="https://freewebsitecode.com/"><i class="fab fa-twitter"></i></a>
-                                      <a class="btn btn-square btn-primary mx-1" href="https://youtube.com/freewebsitecode"><i class="fab fa-youtube"></i></a>
+                                      <a class="btn btn-square btn-primary mx-1" href=" "><i class="fab fa-facebook-f"></i></a>
+                                      <a class="btn btn-square btn-primary mx-1" href=" "><i class="fab fa-twitter"></i></a>
+                                      <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-youtube"></i></a>
                                   </div>
                               </div>
                           </div>
@@ -245,11 +245,11 @@ Vue.component("team", {
                                       <img class="img-fluid" src="img/team-4.jpg" alt="">
                                   </div>
                                   <h5 class="mb-0">Full Name</h5>
-                                  <small>Designation</small>
+                                  <small>Camarero</small>
                                   <div class="d-flex justify-content-center mt-3">
-                                      <a class="btn btn-square btn-primary mx-1" href="https://facebook.com/freewebsitecode"><i class="fab fa-facebook-f"></i></a>
-                                      <a class="btn btn-square btn-primary mx-1" href="https://freewebsitecode.com/"><i class="fab fa-twitter"></i></a>
-                                      <a class="btn btn-square btn-primary mx-1" href="https://youtube.com/freewebsitecode"><i class="fab fa-youtube"></i></a>
+                                      <a class="btn btn-square btn-primary mx-1" href=" "><i class="fab fa-facebook-f"></i></a>
+                                      <a class="btn btn-square btn-primary mx-1" href=" "><i class="fab fa-twitter"></i></a>
+                                      <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-youtube"></i></a>
                                   </div>
                               </div>
                           </div>
@@ -427,8 +427,6 @@ Vue.component("testi", {
   data: function () {
     return {
       list: [],
-      cat: [],
-      len: 0,
       type: "Ensaladas",
     };
   },
@@ -457,6 +455,19 @@ Vue.component("testi", {
         },
       });
     })(jQuery);
+
+    await fetch(
+      "http://singh.alumnes.inspedralbes.cat/js/backend/getComentaris.php",
+      {
+        mode: "cors",
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+        },
+      }
+    )
+      .then((response) => response.json())
+      .then((data) => (this.list = data));
+    console.log(this.list);
   },
 
   template: `<div>
