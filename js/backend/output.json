@@ -1,1 +1,29 @@
-﻿[{"nombre":"Alex Gregorio","from":"Google Maps","comentari":"Hoy hemos ido a comer toda la familia confiando en las reseñas de otros clientes, y estamos más que satisfechos con la experiencia: la comida estaba deliciosa, muy especialmente el arroz con bogavante, el servicio ha sido correcto (muy amables, aunque han tardado un poco en tomarnos nota), y el precio excelente dada la calidad y cantidad. En resumen, un lugar muy recomendable al que volveremos con total seguridad.,"},{"nombre":"Siina Nurminen","from":"Google Maps","comentari":"Servicio era excelente! Nunca hemos experimentado atencion tan amable en Barcelona. Pedimos tacos (de carne y de pollo), nachos con guacamole y chocos, todo perfecto y buenissimo. 100% recomendado!"},{"nombre":"Anmolpreet Kaur","from":"Google Maps","comentari":"Muy buen restaurante, con una estupenda relación calidad-precio. Toda la comida está muy buena y la atención es excelente, siendo todos muy simpáticos y amables. También optando por opciones veganas. Sin lugar a dudas, un sitio para repetir."},{"nombre":"Tania Becerra Schulz","from":"Google Maps","comentari":"Excelente comida, todo muy rico y de buenas porciones. Pedimos Calamares, berenjenas, croquetas y anchoas y todo estuvo delicioso. La atención también es excelente. Definitivamente recomendable, regresaría con mucho gusto."},{"nombre":"Andres Ortega","from":"Google Maps","comentari":"Hemos venido a ser un menú espectacular la camarera un trato espectacular los camareros un chico muy atento nos ha servido todo correctamente y nos han invitado hasta los chupitos un lugar impecable lindo y relax recomendable 100%"}]
+﻿{"comentari":
+[
+    {
+       "nombre":"Alex Gregorio",
+       "from":"Google Maps",
+       "comentari":"Hoy hemos ido a comer toda la familia confiando en las reseñas de otros clientes, y estamos más que satisfechos con la experiencia: la comida estaba deliciosa, muy especialmente el arroz con bogavante, el servicio ha sido correcto (muy amables, aunque han tardado un poco en tomarnos nota), y el precio excelente dada la calidad y cantidad. En resumen, un lugar muy recomendable al que volveremos con total seguridad.,"
+    },
+    {
+       "nombre":"Siina Nurminen",
+       "from":"Google Maps",
+       "comentari":"Servicio era excelente! Nunca hemos experimentado atencion tan amable en Barcelona. Pedimos tacos (de carne y de pollo), nachos con guacamole y chocos, todo perfecto y buenissimo. 100% recomendado!"
+    },
+    {
+       "nombre":"Anmolpreet Kaur",
+       "from":"Google Maps",
+       "comentari":"Muy buen restaurante, con una estupenda relación calidad-precio. Toda la comida está muy buena y la atención es excelente, siendo todos muy simpáticos y amables. También optando por opciones veganas. Sin lugar a dudas, un sitio para repetir."
+    },
+    {
+       "nombre":"Tania Becerra Schulz",
+       "from":"Google Maps",
+       "comentari":"Excelente comida, todo muy rico y de buenas porciones. Pedimos Calamares, berenjenas, croquetas y anchoas y todo estuvo delicioso. La atención también es excelente. Definitivamente recomendable, regresaría con mucho gusto."
+    },
+    {
+       "nombre":"Andres Ortega",
+       "from":"Google Maps",
+       "comentari":"Hemos venido a ser un menú espectacular la camarera un trato espectacular los camareros un chico muy atento nos ha servido todo correctamente y nos han invitado hasta los chupitos un lugar impecable lindo y relax recomendable 100%"
+    }
+ ]
+}
