@@ -1,7 +1,7 @@
 <?php
 if (file_exists('./output.json')) {
     $data = file_get_contents("./output.json");
-    $resultat[] = $data;
+    $resultat = $data;
 } else {
     $resultat[] = 'err';
 }
