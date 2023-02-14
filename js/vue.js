@@ -73,7 +73,7 @@ Vue.component("navbar", {
     <b-modal id="service" size="xl" hide-footer title="Servicios">
         <service></service>
     </b-modal>
-    <b-modal id="team" size="xl"  data-dismiss="modal" hide-footer title="Servicios">
+    <b-modal id="team" size="xl"  data-dismiss="modal"  data-backdrop="false" hide-footer title="Servicios">
         <team></team>
     </b-modal>
       </div>`,
