@@ -831,7 +831,7 @@ const home = Vue.component("home", {
         <b-modal id="about" size="xl" data-dismiss="modal" hide-footer title="Sobre Nosotros">
         <about></about>
     </b-modal>
-    <b-modal id="service" size="xl" hide-footer hide-header title="Servicios">
+    <b-modal id="service" size="xl" hide-footer title="Servicios">
         <service></service>
     </b-modal>
     <b-modal id="team" size="xl"  data-dismiss="modal"  data-backdrop="false" hide-footer title="Servicios">
