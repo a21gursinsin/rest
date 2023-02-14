@@ -110,7 +110,7 @@ Vue.component("foot", {
                         <p>11:00 - 23:59</p>
                         <h5 class="text-light fw-normal">Viernes - Sabado</h5>
                         <p>11:00 - 01:00</p>
-                        <router-link to="/contact"><a href="" class="btn btn-primary py-2 px-4">Contact</a></router-link>
+                        <router-link to="/contacto"></router-link><a href="" class="btn btn-primary py-2 px-4">Contact</a>
                     </div>
                      <div class="col-lg-3 col-md-6">
                         <h4 class="section-title ff-secondary text-start text-primary fw-normal mb-4">Ubicación</h4>
@@ -256,7 +256,6 @@ Vue.component("team", {
               </div>
               </div>`,
 });
-
 Vue.component("about", {
   template: `<div>
         <div class="py-5" id="us">
@@ -325,7 +324,8 @@ Vue.component("menulist", {
   },
   async mounted() {
     await fetch(
-      "http://localhost:8080/rest/js/backend/menulist.php?type=" + this.type,
+      "http://singh.alumnes.inspedralbes.cat/js/backend/menulist.php?type=" +
+        this.type,
       {
         mode: "cors",
         headers: {
@@ -334,26 +334,33 @@ Vue.component("menulist", {
       }
     )
       .then((response) => response.json())
-      .then((menu) => (this.list = console.log(menu)));
+      .then((menu) => (this.list = menu));
 
-    await fetch("http://localhost:8080/rest/js/backend/categoria.php", {
-      mode: "cors",
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-      },
-    })
+    await fetch(
+      "http://singh.alumnes.inspedralbes.cat/js/backend/categoria.php",
+      {
+        mode: "cors",
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+        },
+      }
+    )
       .then((response) => response.json())
       .then((data) => (this.cat = data));
     //   <i class="fa fa-coffee fa-2x text-primary"></i>
   },
   methods: {
     buscarMenu: function (type) {
-      fetch("http://localhost:8080/rest/js/backend/menulist.php?type=" + type, {
-        mode: "cors",
-        headers: {
-          "Access-Control-Allow-Origin": "*",
-        },
-      })
+      fetch(
+        "http://singh.alumnes.inspedralbes.cat/js/backend/menulist.php?type=" +
+          type,
+        {
+          mode: "cors",
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+          },
+        }
+      )
         .then((response) => response.json())
         .then((data) => {
           this.list = data;
