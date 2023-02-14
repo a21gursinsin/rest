@@ -1,6 +1,6 @@
 Vue.component("navbar", {
   template: `<div>
-          <div class="position-relative p-0">
+          <div class="position-relative p-0 ">
           <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4 px-lg-5 py-3 py-lg-0">
               <a href="" class="navbar-brand p-0">
                   <h1 class="text-primary m-0">Restaurant &nbsp;<i class="fa fa-utensils me-3"></i>Milagros</h1>
@@ -24,13 +24,7 @@ Vue.component("navbar", {
           </nav>
       
       </div>
-      <b-modal id="about" size="xl" title="Sobre Nosotros">
-          <about></about>
-      </b-modal>
-      <b-modal id="service" size="xl" hide-footer title="Servicios">
-          <service></service>
-      </b-modal>
-        </div>`,
+    </div>`,
 });
 
 Vue.component("foot", {
@@ -645,43 +639,40 @@ Vue.component("cont", {
 
 const home = Vue.component("home", {
   template: `<div>
-            <div v-if="logon == false">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-3 col-md-2"></div>
-                        <div class="col-lg-6 col-md-8 login-box">
-                            <div class="col-lg-12 login-key"><i class="fa fa-key" aria-hidden="true"></i></div>
-                            <div class="col-lg-12 login-title">ADMIN PANEL</div>
-                            <div class="col-lg-12 login-form">
-                                <div class="col-lg-12 login-form">
-                                    <form>
-                                        <div class="form-group">
-                                            <label class="form-control-label">USERNAME</label>
-                                            <input type="text" class="form-control" v-model="form.username">
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="form-control-label">PASSWORD</label>
-                                            <input type="password" class="form-control" v-model="form.password">
-                                        </div>
+                <div v-show="logon == false">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-3 col-md-2"></div>
+                                <div class="col-lg-6 col-md-8 login-box">
+                                    <div class="col-lg-12 login-key"><i class="fa fa-key" aria-hidden="true"></i></div>
+                                        <div class="col-lg-12 login-title">ADMIN PANEL</div>
+                                            <div class="col-lg-12 login-form">
+                                                <div class="col-lg-12 login-form">
+                                                <form>
+                                                    <div class="form-group">
+                                                        <label class="form-control-label">USERNAME</label>
+                                                        <input type="text" class="form-control" v-model="form.username">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="form-control-label">PASSWORD</label>
+                                                        <input type="password" class="form-control" v-model="form.password">
+                                                    </div>
 
-                                        <div class="col-lg-12 loginbttm">
-                                            <div class="col-lg-6 login-btm login-text">
-                                                <!-- Error Message -->
-                                            </div>
-                                            <div class="col-lg-6 login-btm login-button">
-                                                <button type="submit" class="btn btn-outline-primary" @click="submitLogin();">LOGIN</button>
+                                                    <div class="col-lg-12 loginbttm">
+                                                        <div class="col-lg-6 login-btm login-text">
+                                                            <!-- Error Message -->
+                                                        </div>
+                                                        <div class="col-lg-6 login-btm login-button">
+                                                            <button type="submit" class="btn btn-outline-primary" @click="submitLogin();">LOGIN</button>
+                                                        </div>
+                                                    </div>
+                                                </form>
                                             </div>
                                         </div>
-                                    </form>
                                 </div>
                             </div>
-                            <div class="col-lg-3 col-md-2"></div>
                         </div>
                     </div>
-                    </div>
-                </div>
-                <div v-else>
-                <navbar></navbar>
                 </div>
             </div>`,
   data: function () {

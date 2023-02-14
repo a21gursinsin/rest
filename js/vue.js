@@ -15,7 +15,7 @@ Vue.component("navbar", {
                     <a v-b-modal.about class="nav-item nav-link" >Nosotros</a>
                     <a v-b-modal.service class="nav-item nav-link">Servicios</a>
                     <router-link to="/eat"><a class="nav-item nav-link">Menú</a></router-link>
-                    <a href="testimonial.html"class="nav-item nav-link">Reseñas</a>
+                    <a href="#testimonial"class="nav-item nav-link">Reseñas</a>
                     <router-link to="/contact"><a class="nav-item nav-link">Contacto</a></router-link>
                     
                 </div>
@@ -82,21 +82,21 @@ Vue.component("foot", {
             <div class="container py-5">
                 <div class="row g-5">
                     <div class="col-lg-3 col-md-6">
-                        <h4 class="section-title ff-secondary text-start text-primary fw-normal mb-4">Company</h4>
-                        <a class="btn btn-link" href="">About Us</a>
-                        <a class="btn btn-link" href="">Contact Us</a>
-                        <a class="btn btn-link" href="./booking.html">Reservation</a>
+                        <h4 class="section-title ff-secondary text-start text-primary fw-normal mb-4">Compañia</h4>
+                        <a v-b-modal.about class="btn btn-link" >Nosotros</a>
+                        <router-link to="/contact"><a class="btn btn-link" href="">Contacta con Nosotros</a></router-link>
+                        <router-link to="/booking"><a class="btn btn-link">Reservar Mesa</a></router-link>
                         <a class="btn btn-link" href="">Privacy Policy</a>
                         <a class="btn btn-link" href="">Terms & Condition</a>
                         <div class="d-flex pt-2">
-                            <a class="btn btn-outline-light btn-social" href="#"><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-outline-light btn-social" href="#"><i class="fab fa-tripadvisor"></i></a>
                             <a class="btn btn-outline-light btn-social" href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-outline-light btn-social" href="#"><i class="fab fa-youtube"></i></a>
-                            <a class="btn btn-outline-light btn-social" href="https://freewebsitecode.com"><i class="fab fa-linkedin-in"></i></a>
+                            <a class="btn btn-outline-light btn-social" href="#"><i class="fab fa-instagram"></i></a>
+                            <a class="btn btn-outline-light btn-social" href="#"><i class="fab fa-linkedin-in"></i></a>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6">
-                        <h4 class="section-title ff-secondary text-start text-primary fw-normal mb-4">Contact</h4>
+                        <h4 class="section-title ff-secondary text-start text-primary fw-normal mb-4">Contacto</h4>
                         <p class="btn btn-link"><i class="fa fa-map-marker-alt me-3"></i><a href="https://goo.gl/maps/1zw6EhP4BWX7uchMA" target="_blank">Plaça de Milagros Consarnau i Sabaté, 33, 08902 L'Hospitalet de Llobregat, Barcelona</a></p>
                         <p class="btn btn-link"><i class="bi bi-phone me-3"></i><a href="tel:+34 632 33 53 56">+34 632 33 53 56</a></p>
                         <p class="btn btn-link"><i class="fa fa-phone-alt me-3"></i><a href="tel:+34 933 60 68 24">+34 933 60 68 24</a></p>
@@ -105,12 +105,12 @@ Vue.component("foot", {
                             </p>
                     </div>
                     <div class="col-lg-3 col-md-6">
-                        <h4 class="section-title ff-secondary text-start text-primary fw-normal mb-4">Opening</h4>
+                        <h4 class="section-title ff-secondary text-start text-primary fw-normal mb-4">Abertura</h4>
                         <h5 class="text-light fw-normal">Domingo - Jueves</h5>
                         <p>11:00 - 23:59</p>
                         <h5 class="text-light fw-normal">Viernes - Sabado</h5>
                         <p>11:00 - 01:00</p>
-                        <a href="" class="btn btn-primary py-2 px-4">Contact</a>
+                        <router-link to="/contact"><a href="" class="btn btn-primary py-2 px-4">Contact</a></router-link>
                     </div>
                      <div class="col-lg-3 col-md-6">
                         <h4 class="section-title ff-secondary text-start text-primary fw-normal mb-4">Ubicación</h4>
@@ -123,8 +123,6 @@ Vue.component("foot", {
                     <div class="row">
                         <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
                             &copy; <a class="border-bottom" href="#">Restauran Milagros</a>, All Right Reserved. 
-                            
-                            
                             Designed By <a class="border-bottom" href="http://www.singh.cat/" target="_blank">Gurpreet Singh</a>
                         </div>
                         <div class="col-md-6 text-center text-md-end">
@@ -244,7 +242,7 @@ Vue.component("team", {
                                   <div class="rounded-circle overflow-hidden m-4">
                                       <img class="img-fluid" src="img/team-4.jpg" alt="">
                                   </div>
-                                  <h5 class="mb-0">Full Name</h5>
+                                  <h5 class="mb-0">Simran</h5>
                                   <small>Camarero</small>
                                   <div class="d-flex justify-content-center mt-3">
                                       <a class="btn btn-square btn-primary mx-1" href=" "><i class="fab fa-facebook-f"></i></a>
@@ -258,6 +256,7 @@ Vue.component("team", {
               </div>
               </div>`,
 });
+
 Vue.component("about", {
   template: `<div>
         <div class="py-5" id="us">
@@ -414,6 +413,7 @@ Vue.component("menulist", {
                                             </div>
                                         </div>
                                     </div>
+                                    <br>
                                 </div>
                                 <br>
                             </div> 
@@ -641,16 +641,18 @@ Vue.component("reservation", {
       if (this.result[0] == "err") {
         Swal.fire({
           icon: "error",
-          title: "Oops.asf..",
-          text: "Something went wrong!",
-          footer: '<a href="">Why do I have this issue?</a>',
+          title: "Oops.",
+          text: "Ha ocurrido algun problema técnico, pónganse en contacto via telefónica.",
+          footer:
+            '<a class="btn btn-primary py-sm-3 px-sm-5 w-50 animated slideInLeft" href="tel:+34 933 60 68 24">LLamar Fijo</a><a class="btn btn-info py-sm-3 px-sm-5 ml-1 w-50  animated slideInLeft" href="tel:+34 632 33 53 56">Llamar Movil</a>',
         });
       } else if (this.result[0] == "err2") {
         Swal.fire({
           icon: "error",
           title: "Oops...",
-          text: "Something went wrong!",
-          footer: '<a href="">Why do I have this issue?</a>',
+          text: "Ha ocurrido algun problema técnico, pónganse en contacto via telefónica.",
+          footer:
+            '<a class="btn btn-primary py-sm-3 px-sm-5 w-50 animated slideInLeft" href="tel:+34 933 60 68 24">LLamar Fijo</a><a class="btn btn-info py-sm-3 px-sm-5 ml-1 w-50  animated slideInLeft" href="tel:+34 632 33 53 56">Llamar Movil</a>',
         });
       } else {
         Swal.fire({
