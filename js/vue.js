@@ -972,7 +972,6 @@ const m = Vue.component("comida", {
                 <a href="https://glovoapp.com/es/es/barcelona/restaurante-milagros-barcelona/?utm_source=google&utm_medium=cpc&utm_campaign=google_performance_ES_BCN_Search_cpa_All_FirstOrder_0_NewUsers_es__DigitalBudget_NoPromo_0_12012021&utm_campaignid=1623072654&utm_adgroupid=136291609158&utm_term&utm_matchtype&utm_device=c&gclid=CjwKCAiArY2fBhB9EiwAWqHK6ungY1QK_QKEmnG0ZzhnftujcUXQBPtzipDne0cNVIN07Z8TVEFj1RoCTE8QAvD_BwE" target="_blank">
                     <img class="img-fluid" src="img/glovo.png" alt="" style="height: "><br>
                 </a>
-                <h5 class="card-title">Glovo</h5>
                 <a href="https://glovoapp.com/es/es/barcelona/restaurante-milagros-barcelona/?utm_source=google&utm_medium=cpc&utm_campaign=google_performance_ES_BCN_Search_cpa_All_FirstOrder_0_NewUsers_es__DigitalBudget_NoPromo_0_12012021&utm_campaignid=1623072654&utm_adgroupid=136291609158&utm_term&utm_matchtype&utm_device=c&gclid=CjwKCAiArY2fBhB9EiwAWqHK6ungY1QK_QKEmnG0ZzhnftujcUXQBPtzipDne0cNVIN07Z8TVEFj1RoCTE8QAvD_BwE" class="btn btn-primary w-100" target="_blank">Pide un Glovo</a>
                 </div>
             </div>
@@ -983,7 +982,6 @@ const m = Vue.component("comida", {
                 <a href="https://www.just-eat.es/restaurants-restaurante-milagros-08902/menu" target="_blank" >
                     <img class="img-fluid" src="img/justeat.png" alt=""><br>
                     </a>
-                <h5 class="card-title text-align-center">Justeat</h5>
                 <a href="https://www.just-eat.es/restaurants-restaurante-milagros-08902/menu" target="_blank" class="btn btn-primary w-100">Pide un Justeat</a>
                 </div>
             </div>
