@@ -55,7 +55,7 @@ if (empty($nombre) || empty($mail) || empty($dia) || empty($hora) || empty($pers
 
         $numero = $resultat->ID;
         $to = "gur.coder@gmail.com";
-        $subject = "Reserva de " . $nombre;
+        $subject = "Reserva de " . $numero;
 
         $message = "<h1>Restaurante Milagros</h1>";
         $message .= "<p>Reserva de señor " . $nombre . " para el dia " . $dia . " a las " . $hora . "</p>";
