@@ -67,15 +67,7 @@ Vue.component("navbar", {
             </div>
         </div>
     </b-modal>
-    <b-modal id="about" size="xl" data-dismiss="modal" hide-footer title="Sobre Nosotros">
-        <about></about>
-    </b-modal>
-    <b-modal id="service" size="xl" hide-footer title="Servicios">
-        <service></service>
-    </b-modal>
-    <b-modal id="team" size="xl"  data-dismiss="modal"  data-backdrop="false" hide-footer title="Servicios">
-        <team></team>
-    </b-modal>
+    
       </div>`,
 });
 
@@ -835,6 +827,16 @@ const home = Vue.component("home", {
         <menulist></menulist>
         <testi></testi>
         <foot></foot>
+
+        <b-modal id="about" size="xl" data-dismiss="modal" hide-footer title="Sobre Nosotros">
+        <about></about>
+    </b-modal>
+    <b-modal id="service" size="xl" hide-footer title="Servicios">
+        <service></service>
+    </b-modal>
+    <b-modal id="team" size="xl"  data-dismiss="modal"  data-backdrop="false" hide-footer title="Servicios">
+        <team></team>
+    </b-modal>
         </div>`,
 });
 
