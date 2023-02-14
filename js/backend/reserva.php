@@ -52,12 +52,15 @@ if (empty($nombre) || empty($mail) || empty($dia) || empty($hora) || empty($pers
         while ($row = mysqli_fetch_assoc($result)) {
             $resultat[] = $row;
         }
+
+        $numero = $resultat->ID;
         $to = "gur.coder@gmail.com";
         $subject = "Reserva de " . $nombre;
 
-        $message = "<b>This is HTML message.</b>";
-        $message .= "<h1>Reserva" . "</h1>";
-
+        $message = "<h1>Restaurante Milagros</h1>";
+        $message .= "<p>Reserva de señor " . $nombre . " para el dia " . $dia . " a las " . $hora . "</p>";
+        $message .= "<p>En total son " . $personas . " personas." . "</p>";
+        $message .= "<p> Comentario especial: " . $comentari . "</p>";
         $header = "From:" . $mail . "\r\n";
         $header .= "Cc: \r\n";
         $header .= "MIME-Version: 1.0\r\n";
