@@ -325,8 +325,7 @@ Vue.component("menulist", {
   },
   async mounted() {
     await fetch(
-      "http://singh.alumnes.inspedralbes.cat/js/backend/menulist.php?type=" +
-        this.type,
+      "http://localhost:8080/rest/js/backend/menulist.php?type=" + this.type,
       {
         mode: "cors",
         headers: {
@@ -337,31 +336,24 @@ Vue.component("menulist", {
       .then((response) => response.json())
       .then((menu) => (this.list = console.log(menu)));
 
-    await fetch(
-      "http://singh.alumnes.inspedralbes.cat/js/backend/categoria.php",
-      {
-        mode: "cors",
-        headers: {
-          "Access-Control-Allow-Origin": "*",
-        },
-      }
-    )
+    await fetch("http://localhost:8080/rest/js/backend/categoria.php", {
+      mode: "cors",
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+      },
+    })
       .then((response) => response.json())
       .then((data) => (this.cat = data));
     //   <i class="fa fa-coffee fa-2x text-primary"></i>
   },
   methods: {
     buscarMenu: function (type) {
-      fetch(
-        "http://singh.alumnes.inspedralbes.cat/js/backend/menulist.php?type=" +
-          type,
-        {
-          mode: "cors",
-          headers: {
-            "Access-Control-Allow-Origin": "*",
-          },
-        }
-      )
+      fetch("http://localhost:8080/rest/js/backend/menulist.php?type=" + type, {
+        mode: "cors",
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+        },
+      })
         .then((response) => response.json())
         .then((data) => {
           this.list = data;
