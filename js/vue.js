@@ -13,6 +13,7 @@ Vue.component("navbar", {
                 <div class="navbar-nav ms-auto py-0 pe-4">
                     <router-link to="/"><a class="nav-item nav-link active">Home</a></router-link>
                     <a v-b-modal.about class="nav-item nav-link" >Nosotros</a>
+                    <a v-b-modal.team class="nav-item nav-link">Equipo</a>
                     <a v-b-modal.service class="nav-item nav-link">Servicios</a>
                     <router-link to="/eat"><a class="nav-item nav-link">Menú</a></router-link>
                     <a href="#testimonial"class="nav-item nav-link">Reseñas</a>
@@ -68,10 +69,12 @@ Vue.component("navbar", {
     </b-modal>
     <b-modal id="about" size="xl" hide-footer title="Sobre Nosotros">
         <about></about>
-        <team></team>
     </b-modal>
     <b-modal id="service" size="xl" hide-footer title="Servicios">
         <service></service>
+    </b-modal>
+    <b-modal id="team" size="xl" hide-footer title="Servicios">
+        <team></team>
     </b-modal>
       </div>`,
 });
@@ -191,8 +194,8 @@ Vue.component("team", {
               <div class="pt-5 pb-3">
                   <div class="container">
                       <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                          <h5 class="section-title ff-secondary text-center text-primary fw-normal">Team Members</h5>
-                          <h1 class="mb-5">Our Master Chefs</h1>
+                          <h5 class="section-title ff-secondary text-center text-primary fw-normal">Miembros de Equipo</h5>
+                          <h1 class="mb-5">Nuestro Cocineros & Camareros</h1>
                       </div>
                       <div class="row g-4">
                           <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
