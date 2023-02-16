@@ -1,8 +1,8 @@
 <?php
-$host = "labs.inspedralbes.cat";
-$user = "a21gursinsin_singh";
-$password = "Singh_09";
-$dbname = "a21gursinsin_rest";
+$host = "bbdd.restaurantemilagros.es";
+$user = "ddb198721";
+$password = ":MI17pkkzDgp";
+$dbname = "ddb198721";
 
 $conn = mysqli_connect($host, $user, $password, $dbname);
 if (!$conn) {
