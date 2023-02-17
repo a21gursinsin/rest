@@ -329,7 +329,7 @@ Vue.component("menulist", {
       }
     )
       .then((response) => response.json())
-      .then((menu) => (this.list = menu));
+      .then((menu) => (this.list = console.log(menu)));
 
     await fetch(
       "http://singh.alumnes.inspedralbes.cat/js/backend/categoria.php",
